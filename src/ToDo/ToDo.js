@@ -17,7 +17,7 @@ class ToDo extends Component {
     render() {
 
         return (<div>
-            <h1><AddNewTask takeInfo={this.takeInfo}/></h1>
+            <h2><AddNewTask takeInfo={this.takeInfo}/></h2>
         </div>)
 
     }
