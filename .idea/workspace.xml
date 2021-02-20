@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="06" />
+    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-06">
+      <change afterPath="$PROJECT_DIR$/src/Photo/guitarRed.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Photo/ukulClassic.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Photo/ukulYellow.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Photo/guitarClassic.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/Photo/guitarClassic.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ToDo/AddNewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToDo/AddNewTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ToDo/AddNewTask.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToDo/AddNewTask.module.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lesson_7" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,7 +46,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/Bit" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -53,14 +63,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tatev\Desktop\Bitschool\src\Photo" />
       <recent name="C:\Users\tatev\Desktop\bit-school\src\Photo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tatev\Desktop\Bitschool\src\Photo" />
       <recent name="C:\Users\tatev\Desktop\bit-school\src\Test\Lesson06" />
       <recent name="C:\Users\tatev\Desktop\bit-school\src\Test" />
       <recent name="C:\Users\tatev\Desktop\bit-school\src\MyTest" />
       <recent name="C:\Users\tatev\Desktop\bit-school\src\Test\Lesson06\StateInputEvent" />
-      <recent name="C:\Users\tatev\Desktop\bit-school\src\Test\Lesson06\CallBack" />
     </key>
   </component>
   <component name="RunManager">
@@ -76,6 +87,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.start" />
@@ -102,7 +114,10 @@
       <workItem from="1613657001094" duration="356000" />
       <workItem from="1613657361701" duration="17097000" />
       <workItem from="1613679652127" duration="1626000" />
-      <workItem from="1613681386620" duration="13000" />
+      <workItem from="1613681386620" duration="1157000" />
+      <workItem from="1613848504166" duration="32000" />
+      <workItem from="1613848541385" duration="2430000" />
+      <workItem from="1613851205472" duration="3434000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -125,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613657186967</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="lesson-06">
+      <created>1613681611954</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1613681611954</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,6 +183,7 @@
     </ignored-roots>
     <MESSAGE value="lesson08" />
     <MESSAGE value="06" />
-    <option name="LAST_COMMIT_MESSAGE" value="06" />
+    <MESSAGE value="lesson-06" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson-06" />
   </component>
 </project>
