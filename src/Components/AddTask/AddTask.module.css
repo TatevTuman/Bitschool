@@ -1,6 +1,7 @@
+/*
 .tasks_wrapper{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: 18px;
 
 }
@@ -39,4 +40,9 @@
     background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
     text-decoration: none;
 }
+img{
+    width: 70%;
 
+}
+
+*/

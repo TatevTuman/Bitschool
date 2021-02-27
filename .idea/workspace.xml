@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-06">
-      <change afterPath="$PROJECT_DIR$/src/Photo/guitarRed.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Photo/ukulClassic.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Photo/ukulYellow.jpg" afterDir="false" />
+    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-07&#10;add bootstrap&#10;add css">
+      <change afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/ToDo/ToDo.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Photo/guitarClassic.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/Photo/guitarClassic.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ToDo/AddNewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToDo/AddNewTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ToDo/AddNewTask.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToDo/AddNewTask.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ToDo/AddNewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTask/AddTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ToDo/AddNewTask.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTask/AddTask.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="lesson-07" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,7 +47,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/Bit" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../training" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -67,11 +68,11 @@
       <recent name="C:\Users\tatev\Desktop\bit-school\src\Photo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\AddTask" />
+      <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Photo" />
       <recent name="C:\Users\tatev\Desktop\bit-school\src\Test\Lesson06" />
       <recent name="C:\Users\tatev\Desktop\bit-school\src\Test" />
-      <recent name="C:\Users\tatev\Desktop\bit-school\src\MyTest" />
-      <recent name="C:\Users\tatev\Desktop\bit-school\src\Test\Lesson06\StateInputEvent" />
     </key>
   </component>
   <component name="RunManager">
@@ -117,7 +118,19 @@
       <workItem from="1613681386620" duration="1157000" />
       <workItem from="1613848504166" duration="32000" />
       <workItem from="1613848541385" duration="2430000" />
-      <workItem from="1613851205472" duration="3434000" />
+      <workItem from="1613851205472" duration="4428000" />
+      <workItem from="1613928866508" duration="1481000" />
+      <workItem from="1614004124729" duration="301000" />
+      <workItem from="1614006773104" duration="63000" />
+      <workItem from="1614098643181" duration="1502000" />
+      <workItem from="1614191580810" duration="2472000" />
+      <workItem from="1614247887215" duration="376000" />
+      <workItem from="1614248269585" duration="13000" />
+      <workItem from="1614248751578" duration="419000" />
+      <workItem from="1614267968587" duration="874000" />
+      <workItem from="1614268870435" duration="11526000" />
+      <workItem from="1614353247413" duration="1244000" />
+      <workItem from="1614413624035" duration="10539000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -147,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613681611954</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="lesson-07&#10;add bootstrap&#10;add css">
+      <created>1613855137415</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1613855137415</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,6 +204,8 @@
     <MESSAGE value="lesson08" />
     <MESSAGE value="06" />
     <MESSAGE value="lesson-06" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson-06" />
+    <MESSAGE value="lesson-07" />
+    <MESSAGE value="lesson-07&#10;add bootstrap&#10;add css" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson-07&#10;add bootstrap&#10;add css" />
   </component>
 </project>
