@@ -1,44 +1,47 @@
 import React, {Component} from "react";
 import Task from "../Task/Task";
-import guitarRed from "../../Photo/guitarRed.jpg"
-import guitarClassic from "../../Photo/guitarClassic.jpg"
-import ukulClassic from "../../Photo/guitarRed.jpg"
-import ukulYellow from "../../Photo/ukulYellow.jpg"
 import AddTask from "../AddTask/AddTask";
 import {Col, Container, Row} from "react-bootstrap";
 import s from "./ToDo.module.css";
+import idGenerator from "../Utils/idGenerator";
 
 
 class ToDo extends Component {
-    /*    state = {
-            guitar: [
-                {name: " TERRIS TF-3802С RD", strings: 6, photo: <img src={guitarRed}/>},
-                {name: " Doff RG Guitar ", strings: 7, photo: <img src={guitarClassic}/>},
-                {name: " Укулеле JUS 20 MAYA Afro", strings: 4, photo: <img src={ukulClassic}/>},
-                {name: " Укулеле PLUS-50 YW   ", strings: 4, photo: <img src={ukulYellow}/>}
-            ],
-            inputValue: "",
-        }*/
     state = {
-        guitar: [" TERRIS TF-3802С RD", " Doff RG Guitar ", " Укулеле JUS 20 MAYA Afro"],
-        /*  inputValue: "",*/
+        tasks: [
+            {_id: idGenerator(), title: "Guitar1"},
+            {_id: idGenerator(), title: "Guitar2"},
+            {_id: idGenerator(), title: "Guitar3"}
+        ]
     }
 
-
-    /*    const newArray = myArray.map(a => ({...a}));*/
     handleSubmit = (value) => {
-        const guitar = [...this.state.guitar]
-        guitar.push(value)
+        const tasks = [...this.state.tasks]
+        tasks.push({
+            _id: idGenerator(),
+            title: value,
+        })
         this.setState({
-                guitar: guitar,
+                tasks: tasks,
             }
         )
     }
 
+    handleDeleteTask = (_id) => {
+        const tasks = [...this.state.tasks]
+        const index = tasks.findIndex(task => task._id === _id);
+        tasks.splice(index, 1);
+        this.setState({
+            tasks
+        });
+    }
+
     render() {
-        const guitarsJSX = this.state.guitar.map(function (item, index, array) {
-            return <Col className={s.guitarsList} xs={12} sm={6} md={4} lg={3}
-                        key={index}><Task item={item} index={index}/></Col>
+        const tasksJSX = this.state.tasks.map(task => {
+            return <Col key={task._id} className={s.guitarsList} xs={12} sm={6} md={4} lg={3}>
+                <Task task={task}
+                      handleDeleteTask={this.handleDeleteTask}
+                /></Col>
         });
         return (
             <Container>
@@ -50,7 +53,7 @@ class ToDo extends Component {
                 </Row>
 
                 <Row className={guitarWrapperRow.join(" ")}>
-                    {guitarsJSX}
+                    {tasksJSX}
                 </Row>
 
             </Container>)
