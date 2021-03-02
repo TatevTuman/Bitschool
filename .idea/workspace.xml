@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-08&#10;1. bootstrap in ToDo component &#10;2. Add Task works with Enter">
-      <change afterPath="$PROJECT_DIR$/src/Components/Checkout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Utils/idGenerator.js" afterDir="false" />
+    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-09">
+      <change afterPath="$PROJECT_DIR$/src/Components/Task/Task.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddTask/AddTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTask/AddTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Checkout/Checkout.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.module.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,11 +65,11 @@
       <recent name="C:\Users\tatev\Desktop\bit-school\src\Photo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\Checkout" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\AddTask" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Photo" />
       <recent name="C:\Users\tatev\Desktop\bit-school\src\Test\Lesson06" />
-      <recent name="C:\Users\tatev\Desktop\bit-school\src\Test" />
     </key>
   </component>
   <component name="RunManager">
@@ -128,7 +128,11 @@
       <workItem from="1614268870435" duration="11526000" />
       <workItem from="1614353247413" duration="1244000" />
       <workItem from="1614413624035" duration="12756000" />
-      <workItem from="1614449094153" duration="10413000" />
+      <workItem from="1614449094153" duration="11209000" />
+      <workItem from="1614520526274" duration="512000" />
+      <workItem from="1614593188265" duration="1632000" />
+      <workItem from="1614678894932" duration="1497000" />
+      <workItem from="1614700794475" duration="9855000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -172,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614437992507</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="lesson-09">
+      <created>1614460039135</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1614460039135</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +223,7 @@
     <MESSAGE value="lesson-07" />
     <MESSAGE value="lesson-07&#10;add bootstrap&#10;add css" />
     <MESSAGE value="lesson-08&#10;1. bootstrap in ToDo component &#10;2. Add Task works with Enter" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson-08&#10;1. bootstrap in ToDo component &#10;2. Add Task works with Enter" />
+    <MESSAGE value="lesson-09" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson-09" />
   </component>
 </project>

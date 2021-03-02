@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import Task from "../Task/Task";
 import AddTask from "../AddTask/AddTask";
-import {Col, Container, Row} from "react-bootstrap";
-import s from "./ToDo.module.css";
+import {Button, Col, Container, Row} from "react-bootstrap";
 import idGenerator from "../Utils/idGenerator";
 
 
@@ -12,7 +11,9 @@ class ToDo extends Component {
             {_id: idGenerator(), title: "Guitar1"},
             {_id: idGenerator(), title: "Guitar2"},
             {_id: idGenerator(), title: "Guitar3"}
-        ]
+        ],
+       /* checkedTasks: [],*/
+        checkedTasks: [],
     }
 
     handleSubmit = (value) => {
@@ -36,24 +37,64 @@ class ToDo extends Component {
         });
     }
 
+    handleToggleCheckTasks = (_id) => {
+        let checkedTasks = [...this.state.checkedTasks]
+        if (!checkedTasks.includes(_id)) {
+            checkedTasks.push(_id)
+        } else {
+            checkedTasks = checkedTasks.filter(taskId => taskId !== _id)
+        }
+        this.setState({
+            checkedTasks
+        })
+        console.log(checkedTasks);
+    }
+
+
+    handleDeleteCheckedTasks = () => {
+
+        const {checkedTasks} = this.state;
+        let tasks = [...this.state.tasks];
+        tasks = tasks.filter(task => !checkedTasks.includes(task._id));
+        this.setState({
+            tasks,
+            checkedTasks: []
+        });
+
+    }
+
+
     render() {
-        const tasksJSX = this.state.tasks.map(task => {
-            return <Col key={task._id} className={s.guitarsList} xs={12} sm={6} md={4} lg={3}>
+        const {checkedTasks, tasks} = this.state;
+        const tasksJSX = tasks.map(task => {
+            return <Col key={task._id} xs={12} sm={6} md={4} lg={3}>
                 <Task task={task}
                       handleDeleteTask={this.handleDeleteTask}
-                /></Col>
+                      handleToggleCheckTasks={this.handleToggleCheckTasks}
+                      isAnyTaskChecked={!!checkedTasks.length}
+                      isChecked={checkedTasks.includes(task._id)}
+                />
+            </Col>
         });
         return (
             <Container>
                 <h1> T o D o Component</h1>
                 <Row>
                     <Col>
-                        <AddTask handleSubmit={this.handleSubmit}/>
+                        <AddTask handleSubmit={this.handleSubmit}
+                                 isAnyTaskChecked={!!checkedTasks.length}/>
                     </Col>
                 </Row>
 
                 <Row className={guitarWrapperRow.join(" ")}>
-                    {tasksJSX}
+                    {tasksJSX.length ? tasksJSX : <p>No tasks!</p>}
+                </Row>
+                <Row className="justify-content-center mt-5">
+                    <Button variant="danger"
+                            onClick={this.handleDeleteCheckedTasks}
+                            disabled={!!!checkedTasks.length}>
+                        Delete All
+                    </Button>
                 </Row>
 
             </Container>)

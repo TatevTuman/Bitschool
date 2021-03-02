@@ -1,21 +1,35 @@
 import React from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
-import Checkout from "../Checkout/Checkout";
 import {Button, Card} from "react-bootstrap";
+import s from "./Task.module.css"
 
 
-const Task =({task, handleDeleteTask})=> {
-
+const Task = ({task, handleDeleteTask, handleToggleCheckTasks, isAnyTaskChecked , isChecked}) => {
+const cls = [s.tasksBackground]
+    if(isChecked){
+        cls.push(s.checkedBackground)
+    }
     return (
-        <Card>
+        <Card className={cls.join(" ")}>
+            <input onClick={() => handleToggleCheckTasks(task._id)} type="checkbox"/>
             <Card.Body>
-                <Checkout/>
                 <Card.Title>{task.title}</Card.Title>
+
                 <Button
-                    onClick={(e)=>handleDeleteTask(task._id)}
-                    variant="danger"> <FontAwesomeIcon icon={faTrash}/></Button>
-                <Button className="ml-1" variant="info"> <FontAwesomeIcon icon={faEdit}/></Button>
+                    onClick={() => handleDeleteTask(task._id)}
+                    variant="danger"
+                    disabled={isAnyTaskChecked}>
+                    <FontAwesomeIcon icon={faTrash}/>
+                </Button>
+
+                <Button className="ml-1"
+                        variant="info"
+                        disabled={isAnyTaskChecked}>
+                    <FontAwesomeIcon icon={faEdit}/>
+
+                </Button>
+
             </Card.Body>
         </Card>
 
@@ -24,15 +38,6 @@ const Task =({task, handleDeleteTask})=> {
 
 export default Task;
 
-
-/*
-<div>
-    <Checkout/>
-    <p>{item.title}</p>
-    <FontAwesomeIcon icon={faTrash}/> <FontAwesomeIcon icon={faEdit}/>
-
-</div>
-*/
 
 
 
