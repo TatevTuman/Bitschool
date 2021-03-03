@@ -12,8 +12,8 @@ class ToDo extends Component {
             {_id: idGenerator(), title: "Guitar2"},
             {_id: idGenerator(), title: "Guitar3"}
         ],
-       /* checkedTasks: [],*/
-        checkedTasks: [],
+
+        checkedTasks: new Set(),
     }
 
     handleSubmit = (value) => {
@@ -38,11 +38,12 @@ class ToDo extends Component {
     }
 
     handleToggleCheckTasks = (_id) => {
-        let checkedTasks = [...this.state.checkedTasks]
-        if (!checkedTasks.includes(_id)) {
-            checkedTasks.push(_id)
+        /*        let checkedTasks = {...this.state.checkedTasks}*/
+        let checkedTasks = new Set(this.state.checkedTasks);
+        if (!checkedTasks.has(_id)) {
+            checkedTasks.add(_id)
         } else {
-            checkedTasks = checkedTasks.filter(taskId => taskId !== _id)
+            checkedTasks.delete(_id)
         }
         this.setState({
             checkedTasks
@@ -52,13 +53,12 @@ class ToDo extends Component {
 
 
     handleDeleteCheckedTasks = () => {
-
         const {checkedTasks} = this.state;
         let tasks = [...this.state.tasks];
-        tasks = tasks.filter(task => !checkedTasks.includes(task._id));
+        tasks = tasks.filter(task => !checkedTasks.has(task._id));
         this.setState({
             tasks,
-            checkedTasks: []
+            checkedTasks: new Set()
         });
 
     }
@@ -71,8 +71,8 @@ class ToDo extends Component {
                 <Task task={task}
                       handleDeleteTask={this.handleDeleteTask}
                       handleToggleCheckTasks={this.handleToggleCheckTasks}
-                      isAnyTaskChecked={!!checkedTasks.length}
-                      isChecked={checkedTasks.includes(task._id)}
+                      isAnyTaskChecked={!!checkedTasks.size}
+                      isChecked={checkedTasks.has(task._id)}
                 />
             </Col>
         });
@@ -82,7 +82,7 @@ class ToDo extends Component {
                 <Row>
                     <Col>
                         <AddTask handleSubmit={this.handleSubmit}
-                                 isAnyTaskChecked={!!checkedTasks.length}/>
+                                 isAnyTaskChecked={!!checkedTasks.size}/>
                     </Col>
                 </Row>
 
@@ -92,7 +92,7 @@ class ToDo extends Component {
                 <Row className="justify-content-center mt-5">
                     <Button variant="danger"
                             onClick={this.handleDeleteCheckedTasks}
-                            disabled={!!!checkedTasks.length}>
+                            disabled={!!!checkedTasks.size}>
                         Delete All
                     </Button>
                 </Row>
