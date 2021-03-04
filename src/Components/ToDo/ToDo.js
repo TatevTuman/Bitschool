@@ -1,11 +1,11 @@
-import React, {Component} from "react";
+import React from "react";
 import Task from "../Task/Task";
 import AddTask from "../AddTask/AddTask";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import idGenerator from "../Utils/idGenerator";
 
 
-class ToDo extends Component {
+class ToDo extends React.PureComponent {
     state = {
         tasks: [
             {_id: idGenerator(), title: "Guitar1"},

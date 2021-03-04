@@ -3,9 +3,11 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
 import {Button, Card} from "react-bootstrap";
 import s from "./Task.module.css"
+import {memo} from "react";
 
 
 const Task = ({task, handleDeleteTask, handleToggleCheckTasks, isAnyTaskChecked , isChecked}) => {
+    console.log("Task works" + task._id)
 const cls = [s.tasksBackground]
     if(isChecked){
         cls.push(s.checkedBackground)
@@ -36,7 +38,7 @@ const cls = [s.tasksBackground]
     )
 }
 
-export default Task;
+export default memo(Task);
 
 
 
