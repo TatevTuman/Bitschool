@@ -6,15 +6,15 @@ import s from "./Task.module.css"
 import {memo} from "react";
 
 
-const Task = ({task, handleDeleteTask, handleToggleCheckTasks, isAnyTaskChecked , isChecked}) => {
-    console.log("Task works" + task._id)
-const cls = [s.tasksBackground]
-    if(isChecked){
+const Task = ({task, handleDeleteTask, handleToggleCheckTasks, isAnyTaskChecked, isChecked}) => {
+
+    const cls = [s.tasksBackground]
+    if (isChecked) {
         cls.push(s.checkedBackground)
     }
     return (
         <Card className={cls.join(" ")}>
-            <input onClick={() => handleToggleCheckTasks(task._id)} type="checkbox"/>
+            <input onChange={() => handleToggleCheckTasks(task._id)} type="checkbox" checked={isChecked}/>
             <Card.Body>
                 <Card.Title>{task.title}</Card.Title>
 

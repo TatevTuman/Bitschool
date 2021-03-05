@@ -14,6 +14,7 @@ class ToDo extends React.PureComponent {
         ],
 
         checkedTasks: new Set(),
+
     }
 
     handleSubmit = (value) => {
@@ -38,7 +39,7 @@ class ToDo extends React.PureComponent {
     }
 
     handleToggleCheckTasks = (_id) => {
-        /*        let checkedTasks = {...this.state.checkedTasks}*/
+        /*   let checkedTasks = {...this.state.checkedTasks}*/
         let checkedTasks = new Set(this.state.checkedTasks);
         if (!checkedTasks.has(_id)) {
             checkedTasks.add(_id)
@@ -48,7 +49,6 @@ class ToDo extends React.PureComponent {
         this.setState({
             checkedTasks
         })
-        console.log(checkedTasks);
     }
 
 
@@ -62,7 +62,19 @@ class ToDo extends React.PureComponent {
         });
 
     }
-
+    handleToggleCheckAllTasks = () => {
+        if (this.state.checkedTasks.size === 0) {
+            let tasks = this.state.tasks
+            tasks = tasks.map(task => task._id)
+            this.setState({
+                checkedTasks: new Set(tasks)
+            })
+        } else {
+            this.setState({
+                checkedTasks: new Set()
+            })
+        }
+    }
 
     render() {
         const {checkedTasks, tasks} = this.state;
@@ -73,10 +85,12 @@ class ToDo extends React.PureComponent {
                       handleToggleCheckTasks={this.handleToggleCheckTasks}
                       isAnyTaskChecked={!!checkedTasks.size}
                       isChecked={checkedTasks.has(task._id)}
+                      handleToggleCheckAllTasks={this.handleToggleCheckAllTasks}
                 />
             </Col>
         });
         return (
+
             <Container>
                 <h1> T o D o Component</h1>
                 <Row>
@@ -89,13 +103,18 @@ class ToDo extends React.PureComponent {
                 <Row className={guitarWrapperRow.join(" ")}>
                     {tasksJSX.length ? tasksJSX : <p>No tasks!</p>}
                 </Row>
-                <Row className="justify-content-center mt-5">
+
+                {tasksJSX.length ? <Row className="justify-content-center mt-5">
                     <Button variant="danger"
                             onClick={this.handleDeleteCheckedTasks}
                             disabled={!!!checkedTasks.size}>
                         Delete All
                     </Button>
-                </Row>
+                    <Button className="ml-3"
+                            onClick={this.handleToggleCheckAllTasks}>
+                        {this.state.checkedTasks.size === 0 ? "Check All" : "Remove Checked"}
+                    </Button>
+                </Row> : ""}
 
             </Container>)
     }

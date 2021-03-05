@@ -1,8 +1,9 @@
-import React, {Component} from "react";
+import React from "react";
 import {Button, Form} from "react-bootstrap";
 
 
-class AddTask extends Component {
+class AddTask extends React.PureComponent {
+
 
     state = {
         inputValue: "",
@@ -47,7 +48,7 @@ class AddTask extends Component {
             </Form.Group>
             <Button variant="info"
                     onClick={this.handleButton}
-            disabled={isAnyTaskChecked}>
+                    disabled={isAnyTaskChecked}>
                 Add guitar
             </Button>
 
