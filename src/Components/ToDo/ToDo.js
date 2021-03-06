@@ -63,13 +63,14 @@ class ToDo extends React.PureComponent {
 
     }
     handleToggleCheckAllTasks = () => {
-        if (this.state.checkedTasks.size === 0) {
-            let tasks = this.state.tasks
+        if (this.state.checkedTasks.size <= this.state.tasks.length) {
+            let tasks = [...this.state.tasks]
             tasks = tasks.map(task => task._id)
             this.setState({
                 checkedTasks: new Set(tasks)
             })
-        } else {
+        }
+        if (this.state.checkedTasks.size >= this.state.tasks.length) {
             this.setState({
                 checkedTasks: new Set()
             })
@@ -112,7 +113,8 @@ class ToDo extends React.PureComponent {
                     </Button>
                     <Button className="ml-3"
                             onClick={this.handleToggleCheckAllTasks}>
-                        {this.state.checkedTasks.size === 0 ? "Check All" : "Remove Checked"}
+                        {this.state.checkedTasks.size === this.state.tasks.length ? "Remove Checked" : "Check All"}
+
                     </Button>
                 </Row> : ""}
 
