@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-12">
+    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-12 version-1">
+      <change afterPath="$PROJECT_DIR$/src/Components/Hoc/WithScreenSize.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddTask/AddTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTask/AddTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -60,11 +64,11 @@
       <recent name="C:\Users\tatev\Desktop\bit-school\src\Photo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\Hoc" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\Checkout" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\AddTask" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Photo" />
-      <recent name="C:\Users\tatev\Desktop\bit-school\src\Test\Lesson06" />
     </key>
   </component>
   <component name="RunManager">
@@ -135,7 +139,9 @@
       <workItem from="1614943201331" duration="46000" />
       <workItem from="1614959532025" duration="4773000" />
       <workItem from="1614970516164" duration="7284000" />
-      <workItem from="1615052698046" duration="929000" />
+      <workItem from="1615052698046" duration="1758000" />
+      <workItem from="1615198467407" duration="1366000" />
+      <workItem from="1615289755882" duration="7329000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -214,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614977195286</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="lesson-12.1">
+      <created>1615053650320</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1615053650320</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +272,7 @@
     <MESSAGE value="lesson-10" />
     <MESSAGE value="lesson-11" />
     <MESSAGE value="lesson-12" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson-12" />
+    <MESSAGE value="lesson-12.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson-12.1" />
   </component>
 </project>

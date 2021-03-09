@@ -1,6 +1,7 @@
 import React from "react";
 import {Button, Form} from "react-bootstrap";
-
+import WithScreenSize from "../Hoc/WithScreenSize";
+import PropTypes from "prop-types";
 
 class AddTask extends React.PureComponent {
 
@@ -37,7 +38,7 @@ class AddTask extends React.PureComponent {
 
     render() {
         const {isAnyTaskChecked} = this.props
-
+        console.log("AddTask", this.props)
         return (<div>
 
             <Form.Group controlId="tat">
@@ -58,7 +59,12 @@ class AddTask extends React.PureComponent {
     }
 }
 
-export default AddTask;
+AddTask.propTypes = {
+    handleSubmit:PropTypes.func,
+    isAnyTaskChecked: PropTypes.bool
+}
+
+export default  WithScreenSize(AddTask);
 
 
 

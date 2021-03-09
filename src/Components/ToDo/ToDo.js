@@ -3,9 +3,11 @@ import Task from "../Task/Task";
 import AddTask from "../AddTask/AddTask";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import idGenerator from "../Utils/idGenerator";
+import WithScreenSize from "../Hoc/WithScreenSize";
 
 
 class ToDo extends React.PureComponent {
+
     state = {
         tasks: [
             {_id: idGenerator(), title: "Guitar1"},
@@ -39,7 +41,6 @@ class ToDo extends React.PureComponent {
     }
 
     handleToggleCheckTasks = (_id) => {
-        /*   let checkedTasks = {...this.state.checkedTasks}*/
         let checkedTasks = new Set(this.state.checkedTasks);
         if (!checkedTasks.has(_id)) {
             checkedTasks.add(_id)
@@ -62,19 +63,20 @@ class ToDo extends React.PureComponent {
         });
 
     }
-    handleToggleCheckAllTasks = () => {
-        if (this.state.checkedTasks.size <= this.state.tasks.length) {
-            let tasks = [...this.state.tasks]
-            tasks = tasks.map(task => task._id)
-            this.setState({
-                checkedTasks: new Set(tasks)
-            })
+    toggleCheckAll = () => {
+        const {tasks} = this.state
+        let checkedTasks = new Set(this.state.checkedTasks)
+        if (tasks.length === checkedTasks.size) {
+            checkedTasks.clear();
+        } else {
+            tasks.forEach(task => {
+                checkedTasks.add(task._id);
+            });
         }
-        if (this.state.checkedTasks.size >= this.state.tasks.length) {
-            this.setState({
-                checkedTasks: new Set()
-            })
-        }
+        this.setState({
+            checkedTasks
+        });
+
     }
 
     render() {
@@ -86,14 +88,15 @@ class ToDo extends React.PureComponent {
                       handleToggleCheckTasks={this.handleToggleCheckTasks}
                       isAnyTaskChecked={!!checkedTasks.size}
                       isChecked={checkedTasks.has(task._id)}
-                      handleToggleCheckAllTasks={this.handleToggleCheckAllTasks}
+                      toggleCheckAll={this.toggleCheckAll}
                 />
             </Col>
         });
+        console.log("ToDo", this.props)
         return (
 
             <Container>
-                <h1> T o D o Component</h1>
+                <h1>T o D o Component</h1>
                 <Row>
                     <Col>
                         <AddTask handleSubmit={this.handleSubmit}
@@ -112,7 +115,7 @@ class ToDo extends React.PureComponent {
                         Delete All
                     </Button>
                     <Button className="ml-3"
-                            onClick={this.handleToggleCheckAllTasks}>
+                            onClick={this.toggleCheckAll}>
                         {this.state.checkedTasks.size === this.state.tasks.length ? "Remove Checked" : "Check All"}
 
                     </Button>
@@ -128,6 +131,7 @@ const guitarWrapperRow = [
     "d-flex justify-content-center",
 ]
 
-export default ToDo;
+
+export default WithScreenSize(ToDo);
 
 
