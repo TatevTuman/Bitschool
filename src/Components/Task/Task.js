@@ -8,7 +8,7 @@ import WithScreenSize from "../Hoc/WithScreenSize";
 import PropTypes from "prop-types";
 
 const Task = ({task, handleDeleteTask, handleToggleCheckTasks, isAnyTaskChecked, isChecked, ...props}) => {
-    console.log("Task", props)
+
     const cls = [s.tasksBackground]
     if (isChecked) {
         cls.push(s.checkedBackground)
@@ -18,6 +18,7 @@ const Task = ({task, handleDeleteTask, handleToggleCheckTasks, isAnyTaskChecked,
             <input onChange={() => handleToggleCheckTasks(task._id)} type="checkbox" checked={isChecked}/>
             <Card.Body>
                 <Card.Title>{task.title}</Card.Title>
+                <Card.Title>{task.description}</Card.Title>
 
                 <Button
                     onClick={() => handleDeleteTask(task._id)}
@@ -39,10 +40,14 @@ const Task = ({task, handleDeleteTask, handleToggleCheckTasks, isAnyTaskChecked,
     )
 }
 Task.propTypes = {
-    task: PropTypes.object,
-    handleDeleteTask: PropTypes.func,
-    handleToggleCheckTasks:PropTypes.func,
-    isAnyTaskChecked: PropTypes.bool,
+    task: PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired
+    }),
+    handleDeleteTask: PropTypes.func.isRequired,
+    handleToggleCheckTasks:PropTypes.func.isRequired,
+    isAnyTaskChecked: PropTypes.bool.isRequired,
     isChecked:PropTypes.bool ,
     toggleCheckAll: PropTypes.func
 }
