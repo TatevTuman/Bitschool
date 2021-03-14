@@ -3,8 +3,7 @@ import Task from "../Task/Task";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import idGenerator from "../Utils/idGenerator";
 import Confirm from "../Confirm/Confirm";
-import AddTaskModal from "../AddTaskModal/AddTaskModal";
-import EditTaskModal from "../EditTaskModal/EditTaskModal";
+import AddTaskAndEditModal from "../AddTaskAndEditModal/AddTaskAndEditModal";
 
 
 class ToDo extends React.PureComponent {
@@ -185,7 +184,7 @@ class ToDo extends React.PureComponent {
 
                 {
                     isOpenAddTaskModal &&
-                    <AddTaskModal
+                    <AddTaskAndEditModal
                         onHide={this.toggleOpenAddTaskModal}
                         isAnyTaskChecked={!!checkedTasks.size}
                         onSubmit={this.handleSubmit}/>
@@ -193,7 +192,7 @@ class ToDo extends React.PureComponent {
 
                 {
                     editableTask &&
-                    <EditTaskModal
+                    <AddTaskAndEditModal
                         onHide={this.removeEditableTask}
                         editableTask={editableTask}
                         onSubmit={this.handleEditTask}

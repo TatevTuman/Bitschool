@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-15.1">
+    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-15.2">
+      <change afterPath="$PROJECT_DIR$/src/Components/AddTaskAndEditModal/AddTaskAndEditModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AddTaskAndEditModal/AddTaskAndEditModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTaskModal/AddTaskModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Confirm/Confirm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Confirm/Confirm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Hoc/EditTaskModal/EditTaskModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EditTaskModal/EditTaskModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddTaskModal/AddTaskModal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EditTaskModal/EditTaskModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EditTaskModal/EditTaskModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +150,8 @@
       <workItem from="1615730958564" duration="1771000" />
       <workItem from="1615732778271" duration="2274000" />
       <workItem from="1615743144072" duration="1836000" />
-      <workItem from="1615745021570" duration="391000" />
+      <workItem from="1615745021570" duration="2081000" />
+      <workItem from="1615747150836" duration="845000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -266,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615680993036</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="lesson-15.2">
+      <created>1615745691993</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1615745691993</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,6 +322,7 @@
     <MESSAGE value="lesson-14" />
     <MESSAGE value="lesson-15" />
     <MESSAGE value="lesson-15.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson-15.1" />
+    <MESSAGE value="lesson-15.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson-15.2" />
   </component>
 </project>

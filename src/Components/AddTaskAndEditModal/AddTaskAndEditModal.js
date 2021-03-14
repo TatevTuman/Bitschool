@@ -1,42 +1,52 @@
 import React from "react";
-import { Component, createRef} from "react";
-import { Modal, Button, Form } from "react-bootstrap";
+import {Component, createRef} from "react";
+import {Modal, Button, Form} from "react-bootstrap";
+import PropTypes, {bool} from "prop-types";
 
 
-class EditTaskModal extends Component {
+class AddTaskAndEditModal extends Component {
     constructor(props) {
         super(props);
-        this.titleInputRef = createRef();
-        this.state = {
-            ...props.editableTask
-        }
+        this.inputRef = createRef();
+
+         this.props.editableTask
+                ? this.state = {
+                    ...props.editableTask
+                } : this.state = {
+                    title: "",
+                    description: "",
+                }
+
+
     }
 
     handleChange = (event) => {
-        const { name, value } = event.target;
+        const {name, value} = event.target;
         this.setState({
             [name]: value
 
-        });
+        })
     }
     handleButton = ({key, type}) => {
-        const { title, description } = this.state
+        const {title, description} = this.state
         if (!title || !description ||
             (type === 'keypress' && key !== 'Enter')
-            )
+        )
             return
-     
-        this.props.onSubmit(this.state)
+
+        this.props.onSubmit(this.state);
         this.props.onHide();
     }
 
     componentDidMount() {
-        this.titleInputRef.current.focus();
+        this.inputRef.current.focus();
+
     }
 
     render() {
-        const { onHide } = this.props
-        const { title, description } = this.state;
+        const {onHide, isAnyTaskChecked} = this.props;
+        const {title, description} = this.state;
+
         return (
             <div>
                 <Modal
@@ -48,8 +58,8 @@ class EditTaskModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Edit task modal
-        </Modal.Title>
+                            {this.props.editableTask ? "Edit task modal" : "Add task modal"}
+                        </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Form.Group controlId="tat">
@@ -60,7 +70,8 @@ class EditTaskModal extends Component {
                                 onChange={this.handleChange}
                                 onKeyPress={this.handleButton}
                                 value={title}
-                                ref={this.titleInputRef}
+                                disabled={isAnyTaskChecked}
+                                ref={this.inputRef}
 
                             />
                         </Form.Group>
@@ -70,11 +81,11 @@ class EditTaskModal extends Component {
                                 name="description"
                                 as="textarea"
                                 rows={3}
-                                style={{ resize: "none" }}
+                                style={{resize: "none"}}
                                 placeholder="Description "
                                 onChange={this.handleChange}
                                 value={description}
-                             
+                                disabled={isAnyTaskChecked}
 
                             />
                         </Form.Group>
@@ -84,20 +95,24 @@ class EditTaskModal extends Component {
                         <Button
 
                             onClick={this.handleButton}
+                            disabled={isAnyTaskChecked}
                         >
                             Submit
-                            </Button>
+                        </Button>
                     </Modal.Footer>
                 </Modal>
-            </div>
-        )
+
+
+            </div>)
     }
 }
 
-EditTaskModal.propTypes = {
-
+AddTaskAndEditModal.propTypes = {
+    onHide: PropTypes.func.isRequired,
+    isAnyTaskChecked:bool.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    editableTask: PropTypes.string
 }
 
-export  default  EditTaskModal;
 
-
+export default AddTaskAndEditModal;
