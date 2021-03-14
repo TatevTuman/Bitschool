@@ -1,13 +1,21 @@
 import React from "react";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
-import {Button, Card} from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { Button, Card } from "react-bootstrap";
 import s from "./Task.module.css"
-import {memo} from "react";
+import { memo } from "react";
 import WithScreenSize from "../Hoc/WithScreenSize";
 import PropTypes from "prop-types";
 
-const Task = ({task, handleDeleteTask, handleToggleCheckTasks, isAnyTaskChecked, isChecked, ...props}) => {
+
+const Task = ({ 
+    task,
+    handleDeleteTask,
+    handleToggleCheckTasks,
+    isAnyTaskChecked,
+    isChecked,
+    setEditableTask,
+    ...props }) => {
 
     const cls = [s.tasksBackground]
     if (isChecked) {
@@ -15,7 +23,7 @@ const Task = ({task, handleDeleteTask, handleToggleCheckTasks, isAnyTaskChecked,
     }
     return (
         <Card className={cls.join(" ")}>
-            <input onChange={() => handleToggleCheckTasks(task._id)} type="checkbox" checked={isChecked}/>
+            <input onChange={() => handleToggleCheckTasks(task._id)} type="checkbox" checked={isChecked} />
             <Card.Body>
                 <Card.Title>{task.title}</Card.Title>
                 <Card.Title>{task.description}</Card.Title>
@@ -24,13 +32,15 @@ const Task = ({task, handleDeleteTask, handleToggleCheckTasks, isAnyTaskChecked,
                     onClick={() => handleDeleteTask(task._id)}
                     variant="danger"
                     disabled={isAnyTaskChecked}>
-                    <FontAwesomeIcon icon={faTrash}/>
+                    <FontAwesomeIcon icon={faTrash} />
                 </Button>
 
                 <Button className="ml-1"
-                        variant="info"
-                        disabled={isAnyTaskChecked}>
-                    <FontAwesomeIcon icon={faEdit}/>
+                    variant="info"
+                    disabled={isAnyTaskChecked}
+                    onClick={() => setEditableTask(task)}
+                >
+                    <FontAwesomeIcon icon={faEdit} />
 
                 </Button>
 
@@ -46,9 +56,9 @@ Task.propTypes = {
         description: PropTypes.string.isRequired
     }),
     handleDeleteTask: PropTypes.func.isRequired,
-    handleToggleCheckTasks:PropTypes.func.isRequired,
+    handleToggleCheckTasks: PropTypes.func.isRequired,
     isAnyTaskChecked: PropTypes.bool.isRequired,
-    isChecked:PropTypes.bool ,
+    isChecked: PropTypes.bool,
     toggleCheckAll: PropTypes.func
 }
 

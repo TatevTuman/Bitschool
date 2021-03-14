@@ -3,7 +3,7 @@ import Task from "../Task/Task";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import idGenerator from "../Utils/idGenerator";
 import WithScreenSize from "../Hoc/WithScreenSize";
-import AddTaskModal from "../AddTaskModal/AddTaskModal";
+import AddTaskAndEditModal from "../AddTaskAndEditModal/AddTaskAndEditModal";
 import Confirm from "../Confirm/Confirm";
 
 
@@ -19,7 +19,7 @@ class ToDo extends React.PureComponent {
         checkedTasks: new Set(),
         isOpenAddTaskModal: false,
         isOpenConfirm: false,
-
+        editableTask: null
     }
 
     toggleOpenAddTaskModal = () => {
@@ -27,7 +27,6 @@ class ToDo extends React.PureComponent {
         this.setState({
             isOpenAddTaskModal: !isOpenAddTaskModal
         })
-
     }
 
     toggleOpenConfirm = () => {
@@ -35,9 +34,11 @@ class ToDo extends React.PureComponent {
         this.setState({
             isOpenConfirm: !isOpenConfirm
         })
-
-
     }
+
+
+
+
 
     handleSubmit = (formData) => {
         const tasks = [...this.state.tasks]
@@ -82,10 +83,6 @@ class ToDo extends React.PureComponent {
             checkedTasks: new Set()
         });
 
-
-
-
-
     }
     toggleCheckAll = () => {
         const { tasks } = this.state
@@ -103,8 +100,29 @@ class ToDo extends React.PureComponent {
 
     }
 
+    setEditableTask = (editableTask) => {
+        this.setState({
+            editableTask
+        });
+    }
+    removeEditableTask = () => {
+        this.setState({
+            editableTask: null
+        });
+    }
+    handleEditTask = (editableTask) => {
+        const tasks = [...this.state.tasks];
+        const idx = tasks.findIndex(task => task._id === editableTask._id);
+        tasks[idx] = editableTask;
+        this.setState({
+            tasks
+        });
+
+    }
+
+
     render() {
-        const { checkedTasks, tasks, isOpenAddTaskModal, isOpenConfirm } = this.state;
+        const { checkedTasks, tasks, isOpenAddTaskModal, isOpenConfirm, editableTask } = this.state;
         const tasksJSX = tasks.map(task => {
             return <Col key={task._id} xs={12} sm={6} md={4} lg={3}>
                 <Task task={task}
@@ -113,6 +131,8 @@ class ToDo extends React.PureComponent {
                     isAnyTaskChecked={!!checkedTasks.size}
                     isChecked={checkedTasks.has(task._id)}
                     toggleCheckAll={this.toggleCheckAll}
+                    setEditableTask={this.setEditableTask}
+
                 />
             </Col>
         });
@@ -150,19 +170,31 @@ class ToDo extends React.PureComponent {
                     </Row> : ""}
 
                 </Container>
-                {isOpenAddTaskModal &&
-                    <AddTaskModal
-                        onHide={this.toggleOpenAddTaskModal}
-                        isAnyTaskChecked={!!checkedTasks.size}
-                        handleSubmit={this.handleSubmit} />}
 
-                {isOpenConfirm &&
+                {
+                    isOpenConfirm &&
                     <Confirm
                         onHide={this.toggleOpenConfirm}
-                        onSubmit={this.handleDeleteCheckedTasks} 
-                        count= {checkedTasks.size}/>}
+                        onSubmit={this.handleDeleteCheckedTasks}
+                        count={checkedTasks.size} />
+                }
 
+                {
+                    isOpenAddTaskModal &&
+                    <AddTaskAndEditModal
+                        onHide={this.toggleOpenAddTaskModal}
+                        isAnyTaskChecked={!!checkedTasks.size}
+                        handleSubmit={this.handleSubmit} />
+                }
 
+                {
+                    editableTask && 
+                    <AddTaskAndEditModal
+                        onHide={this.removeEditableTask}
+                        editableTask={editableTask}
+                        onSubmit={this.handleEditTask}
+                    />
+                }
             </>
 
         )
