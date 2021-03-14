@@ -1,13 +1,17 @@
 .tasksBackground {
-    background-color: #ffc107;
-    border: #17a2b8 2px solid;
-    border-radius: 5px;
-    color:white;
+    border: #ffffff 1px solid;
+    border-left:none;
+    border-right: none;
+    border-top: none;
     margin-top: 5px;
-    margin-left: 5px;
+  
 }
 
-.checkedBackground {
-    background-color: #a59d70;
 
-}
+
+
+
+
+
+
+

@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-15.1">
-      <change afterPath="$PROJECT_DIR$/src/Components/AddTaskAndEditModal/AddTaskAndEditModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Confirm/Confirm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Hoc/EditTaskModal/EditTaskModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddTaskAndEditModal/AddTaskAndEditModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTaskModal/AddTaskModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Confirm/Confirm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Confirm/Confirm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Hoc/EditTaskModal/EditTaskModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EditTaskModal/EditTaskModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,10 +66,10 @@
       <recent name="C:\Users\tatev\Desktop\bit-school\src\Photo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\Hoc" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\Checkout" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\AddTask" />
-      <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Photo" />
     </key>
   </component>
@@ -141,7 +146,13 @@
       <workItem from="1615289755882" duration="7630000" />
       <workItem from="1615640293657" duration="1162000" />
       <workItem from="1615663436082" duration="82000" />
-      <workItem from="1615680112459" duration="752000" />
+      <workItem from="1615680112459" duration="987000" />
+      <workItem from="1615719979980" duration="1786000" />
+      <workItem from="1615721846259" duration="1287000" />
+      <workItem from="1615730958564" duration="1771000" />
+      <workItem from="1615732778271" duration="2274000" />
+      <workItem from="1615743144072" duration="1836000" />
+      <workItem from="1615745021570" duration="391000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -248,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615680476794</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="lesson-15.1">
+      <created>1615680993036</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1615680993036</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

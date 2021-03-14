@@ -21,7 +21,7 @@ const Confirm = (props) => {
                     Close
 </Button>
                 <Button variant="primary" onClick={handleSubmit}>
-                    Detete
+                    Delete
 </Button>
             </Modal.Footer>
         </Modal>

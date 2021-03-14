@@ -1,19 +1,19 @@
 import React from "react";
 import Task from "../Task/Task";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import {Button, Col, Container, Row} from "react-bootstrap";
 import idGenerator from "../Utils/idGenerator";
-import WithScreenSize from "../Hoc/WithScreenSize";
-import AddTaskAndEditModal from "../AddTaskAndEditModal/AddTaskAndEditModal";
 import Confirm from "../Confirm/Confirm";
+import AddTaskModal from "../AddTaskModal/AddTaskModal";
+import EditTaskModal from "../EditTaskModal/EditTaskModal";
 
 
 class ToDo extends React.PureComponent {
 
     state = {
         tasks: [
-            { _id: idGenerator(), title: "Guitar1", description: "description 1" },
-            { _id: idGenerator(), title: "Guitar2", description: "description 2" },
-            { _id: idGenerator(), title: "Guitar3", description: "description 3" }
+            {_id: idGenerator(), title: "Guitar1", description: "description 1"},
+            {_id: idGenerator(), title: "Guitar2", description: "description 2"},
+            {_id: idGenerator(), title: "Guitar3", description: "description 3"}
         ],
 
         checkedTasks: new Set(),
@@ -23,22 +23,18 @@ class ToDo extends React.PureComponent {
     }
 
     toggleOpenAddTaskModal = () => {
-        const { isOpenAddTaskModal } = this.state
+        const {isOpenAddTaskModal} = this.state
         this.setState({
             isOpenAddTaskModal: !isOpenAddTaskModal
         })
     }
 
     toggleOpenConfirm = () => {
-        const { isOpenConfirm } = this.state
+        const {isOpenConfirm} = this.state
         this.setState({
             isOpenConfirm: !isOpenConfirm
         })
     }
-
-
-
-
 
     handleSubmit = (formData) => {
         const tasks = [...this.state.tasks]
@@ -47,8 +43,8 @@ class ToDo extends React.PureComponent {
             ...formData,
         })
         this.setState({
-            tasks: tasks,
-        }
+                tasks
+            }
         )
     }
 
@@ -75,7 +71,7 @@ class ToDo extends React.PureComponent {
 
 
     handleDeleteCheckedTasks = () => {
-        const { checkedTasks } = this.state;
+        const {checkedTasks} = this.state;
         let tasks = [...this.state.tasks];
         tasks = tasks.filter(task => !checkedTasks.has(task._id));
         this.setState({
@@ -85,7 +81,7 @@ class ToDo extends React.PureComponent {
 
     }
     toggleCheckAll = () => {
-        const { tasks } = this.state
+        const {tasks} = this.state
         let checkedTasks = new Set(this.state.checkedTasks)
         if (tasks.length === checkedTasks.size) {
             checkedTasks.clear();
@@ -122,16 +118,17 @@ class ToDo extends React.PureComponent {
 
 
     render() {
-        const { checkedTasks, tasks, isOpenAddTaskModal, isOpenConfirm, editableTask } = this.state;
+        const {checkedTasks, tasks, isOpenAddTaskModal, isOpenConfirm, editableTask} = this.state;
         const tasksJSX = tasks.map(task => {
-            return <Col key={task._id} xs={12} sm={6} md={4} lg={3}>
+            return <Col key={task._id}>
+                {/*  xs={12} sm={6} md={4} lg={3} */}
                 <Task task={task}
-                    handleDeleteTask={this.handleDeleteTask}
-                    handleToggleCheckTasks={this.handleToggleCheckTasks}
-                    isAnyTaskChecked={!!checkedTasks.size}
-                    isChecked={checkedTasks.has(task._id)}
-                    toggleCheckAll={this.toggleCheckAll}
-                    setEditableTask={this.setEditableTask}
+                      handleDeleteTask={this.handleDeleteTask}
+                      handleToggleCheckTasks={this.handleToggleCheckTasks}
+                      isAnyTaskChecked={!!checkedTasks.size}
+                      isChecked={checkedTasks.has(task._id)}
+                      toggleCheckAll={this.toggleCheckAll}
+                      setEditableTask={this.setEditableTask}
 
                 />
             </Col>
@@ -140,33 +137,40 @@ class ToDo extends React.PureComponent {
         return (
             <>
                 <Container>
-                    <h1>T o D o Component</h1>
+                    <h2 style={{color: "white"}}>T o D o Component</h2>
                     <Row>
-                        <Col>
-                            <Button onClick={this.toggleOpenAddTaskModal}>Add Task</Button>
+                        <Col className="pt-3 pb-3" style={{backgroundColor: "#343a40"}}>
+                            <Button variant="warning" style={{color: " #ffffff"}} onClick={this.toggleOpenAddTaskModal}>Add
+                                Task</Button>
                         </Col>
                     </Row>
 
 
-                    <Row className={guitarWrapperRow.join(" ")}>
-                        {tasksJSX.length ? tasksJSX : <p>No tasks!</p>}
+                    <Row className="pt-3 pb-3 mt-2" style={{backgroundColor: "rgb(52, 58, 64)"}}>
+                        <Col>
+                            {tasksJSX.length ? tasksJSX : <p style={{color: "white"}}>No tasks!</p>}
+                        </Col>
+
                     </Row>
 
-                    {tasksJSX.length ? <Row className="justify-content-center mt-5">
-                        <Button
-                            variant="danger"
-                            onClick={this.toggleOpenConfirm}
-                            disabled={!!!checkedTasks.size}>
-                            Delete All
-                    </Button>
-                        <Button className="ml-3"
-                            onClick={this.toggleCheckAll}
+                    {tasksJSX.length ? <Row className=" mt-2">
 
+                        <Col className="pt-3 pb-3" style={{backgroundColor: "#343a40"}}>
 
-                        >
-                            {this.state.checkedTasks.size === this.state.tasks.length ? "Remove Checked" : "Check All"}
+                            <Button style={{backgroundColor: "#343a40"}}
+                                    onClick={this.toggleCheckAll}
+                            >
+                                {this.state.checkedTasks.size === this.state.tasks.length ? "Remove Checked" : "Check All"}
+                            </Button>
 
-                        </Button>
+                            <Button className="ml-3" style={{backgroundColor: "#343a40"}}
+                                    variant="danger"
+                                    onClick={this.toggleOpenConfirm}
+                                    disabled={!!!checkedTasks.size}>
+                                Delete All
+                            </Button>
+
+                        </Col>
                     </Row> : ""}
 
                 </Container>
@@ -176,20 +180,20 @@ class ToDo extends React.PureComponent {
                     <Confirm
                         onHide={this.toggleOpenConfirm}
                         onSubmit={this.handleDeleteCheckedTasks}
-                        count={checkedTasks.size} />
+                        count={checkedTasks.size}/>
                 }
 
                 {
                     isOpenAddTaskModal &&
-                    <AddTaskAndEditModal
+                    <AddTaskModal
                         onHide={this.toggleOpenAddTaskModal}
                         isAnyTaskChecked={!!checkedTasks.size}
-                        handleSubmit={this.handleSubmit} />
+                        onSubmit={this.handleSubmit}/>
                 }
 
                 {
-                    editableTask && 
-                    <AddTaskAndEditModal
+                    editableTask &&
+                    <EditTaskModal
                         onHide={this.removeEditableTask}
                         editableTask={editableTask}
                         onSubmit={this.handleEditTask}
@@ -202,12 +206,7 @@ class ToDo extends React.PureComponent {
 
 }
 
-const guitarWrapperRow = [
-    "mt-5",
-    "d-flex justify-content-center",
-]
 
-
-export default WithScreenSize(ToDo);
+export default ToDo;
 
 

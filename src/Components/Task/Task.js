@@ -1,57 +1,62 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
-import { Button, Card } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import s from "./Task.module.css"
 import { memo } from "react";
-import WithScreenSize from "../Hoc/WithScreenSize";
 import PropTypes from "prop-types";
 
-
-const Task = ({ 
+const Task = ({
     task,
     handleDeleteTask,
     handleToggleCheckTasks,
     isAnyTaskChecked,
     isChecked,
     setEditableTask,
-    ...props }) => {
+   }) => {
 
     const cls = [s.tasksBackground]
-    if (isChecked) {
-        cls.push(s.checkedBackground)
-    }
+
     return (
-        <Card className={cls.join(" ")}>
-            <input onChange={() => handleToggleCheckTasks(task._id)} type="checkbox" checked={isChecked} />
-            <Card.Body>
-                <Card.Title>{task.title}</Card.Title>
-                <Card.Title>{task.description}</Card.Title>
+        <Container className={cls.join(" ")}>
+            <Row  >
+                <input onChange={() => handleToggleCheckTasks(task._id)} type="checkbox" checked={isChecked} />
+            </Row>
 
-                <Button
-                    onClick={() => handleDeleteTask(task._id)}
-                    variant="danger"
-                    disabled={isAnyTaskChecked}>
-                    <FontAwesomeIcon icon={faTrash} />
-                </Button>
+            <Row xs={1} md={2} >
+                <Col><h3 style={{ color: "#ffc107" }}>{task.title}</h3> <p style={{ color: "white" }}>{task.description}</p></Col>
 
-                <Button className="ml-1"
-                    variant="info"
-                    disabled={isAnyTaskChecked}
-                    onClick={() => setEditableTask(task)}
-                >
-                    <FontAwesomeIcon icon={faEdit} />
+                <Col>
 
-                </Button>
+                    <Button style={{ backgroundColor: "#343a40" }}
+                        variant="info"
+                        disabled={isAnyTaskChecked}
+                        onClick={() => setEditableTask(task)}
+                    >
+                        <FontAwesomeIcon icon={faEdit} />
 
-            </Card.Body>
-        </Card>
+                    </Button>
+
+                    <Button style={{ backgroundColor: "#343a40" }} className="ml-2"
+                        onClick={() => handleDeleteTask(task._id)}
+                        variant="danger"
+                        disabled={isAnyTaskChecked}>
+                        <FontAwesomeIcon icon={faTrash} />
+                    </Button>
+
+
+
+
+                </Col>
+            </Row>
+
+        </Container>
 
     )
 }
 Task.propTypes = {
-    task: PropTypes.shape({
-        _id: PropTypes.string.isRequired,
+/*    task: PropTypes.shape({
+      /!*  _id: PropTypes.string.isRequired,*!/
         title: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired
     }),
@@ -59,11 +64,11 @@ Task.propTypes = {
     handleToggleCheckTasks: PropTypes.func.isRequired,
     isAnyTaskChecked: PropTypes.bool.isRequired,
     isChecked: PropTypes.bool,
-    toggleCheckAll: PropTypes.func
+    toggleCheckAll: PropTypes.func*/
 }
 
 
-export default WithScreenSize(memo(Task));
+export default memo(Task);
 
 
 

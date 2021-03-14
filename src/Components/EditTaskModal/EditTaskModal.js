@@ -1,4 +1,4 @@
-import React from "react";
+import React, {createRef} from "react";
 import { Component} from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
@@ -6,7 +6,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 class EditTaskModal extends Component {
     constructor(props) {
         super(props);
-     /*   this.titleInputRef = createRef(null);*/
+        this.titleInputRef = createRef();
         this.state = {
             ...props.editableTask
         }
@@ -82,10 +82,10 @@ class EditTaskModal extends Component {
                     <Modal.Footer>
                         <Button variant="danger" onClick={onHide}>Close</Button>
                         <Button
-                          /*  onClick={onHide}*/
+
                             onClick={this.handleButton}
                         >
-                            Edit
+                            Submit
                             </Button>
                     </Modal.Footer>
                 </Modal>
@@ -97,5 +97,7 @@ class EditTaskModal extends Component {
 EditTaskModal.propTypes = {
 
 }
+
+export  default  EditTaskModal;
 
 
