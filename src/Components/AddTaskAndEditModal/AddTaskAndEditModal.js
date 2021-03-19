@@ -106,7 +106,6 @@ class AddTaskAndEditModal extends Component {
                                 onChange={date => this.setDate(date)}/>
                         </Form.Group>
 
-
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="danger" onClick={onHide}>Close</Button>
@@ -126,9 +125,9 @@ class AddTaskAndEditModal extends Component {
 
 AddTaskAndEditModal.propTypes = {
     onHide: PropTypes.func.isRequired,
-    isAnyTaskChecked: PropTypes.bool.isRequired,
+    isAnyTaskChecked: PropTypes.bool,
     onSubmit: PropTypes.func.isRequired,
-    editableTask: PropTypes.string
+    editableTask: PropTypes.object
 }
 
 

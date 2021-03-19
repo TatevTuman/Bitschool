@@ -58,26 +58,27 @@ class ToDo extends React.PureComponent {
             })
     }
 
+
     handleDeleteTask = (_id) => {
-        (async () => {
-            try {
-                const response = await fetch(`${API_HOST}/task/${_id}`, {
-                    method: "DELETE"
-                });
-                const data = await response.json();
 
+        fetch(`${API_HOST}/task/` + _id, {
+            method: "DELETE"
+        })
+            .then(res => res.json())
+            .then(data => {
                 if (data.error)
-                    throw data.error;
-
-                let tasks = [...this.state.tasks];
-                tasks = tasks.filter(task => task._id !== _id);
+                    throw data.error
+                const tasks = [...this.state.tasks]
+                const index = tasks.findIndex(task => task._id === _id);
+                tasks.splice(index, 1);
                 this.setState({
                     tasks
                 });
-            } catch (error) {
-                console.log("Some problem with delete task", error);
-            }
-        })();
+
+            })
+            .catch(error => {
+                console.log("Some problem with delete task", error)
+            })
 
     }
 
@@ -167,25 +168,30 @@ class ToDo extends React.PureComponent {
 
 
     handleEditTask = (editableTask) => {
-        (async () => {
-            const response = await fetch(`${API_HOST}/task/` + editableTask._id, {
-                method: "PUT",
-                body: JSON.stringify(editableTask),
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            });
-            const data = await response.json();
-            const tasks = [...this.state.tasks];
-            const idx = tasks.findIndex(task => task._id === data._id);
-            tasks[idx] = data;
-            this.setState({
-                tasks
-            });
 
-        })()
+        fetch(`${API_HOST}/task/` + editableTask._id, {
+            method: "PUT",
+            body: JSON.stringify(editableTask),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
 
+            .then(data => {
+                if (data.error)
+                    throw data.error
+                const tasks = [...this.state.tasks];
+                const idx = tasks.findIndex(task => task._id === editableTask._id);
+                tasks[idx] = editableTask;
+                this.setState({
+                    tasks
+                });
 
+            })
+            .catch(error => {
+                console.log("Some problem with edit task", error)
+            })
     }
 
 
@@ -209,11 +215,15 @@ class ToDo extends React.PureComponent {
         return (
             <>
                 <Container>
-                    <h2 style={{color: "white"}}>T o D o Component</h2>
+                    <h2 style={{color: "dark"}}>T o D o Component</h2>
                     <Row>
                         <Col className="pt-3 pb-3" style={{backgroundColor: "#343a40"}}>
-                            <Button variant="warning" style={{color: " #ffffff"}} onClick={this.toggleOpenAddTaskModal}>Add
-                                Task</Button>
+                            <Button variant="warning"
+                                    style={{color: " #ffffff"}}
+                                    onClick={this.toggleOpenAddTaskModal}
+                                    disabled={!!checkedTasks.size}>
+                                Add Task
+                            </Button>
                         </Col>
                     </Row>
 
@@ -260,6 +270,7 @@ class ToDo extends React.PureComponent {
                         onHide={this.toggleOpenAddTaskModal}
                         isAnyTaskChecked={!!checkedTasks.size}
                         onSubmit={this.handleSubmit}/>
+
                 }
 
                 {

@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-15.3 finish">
-      <change afterPath="$PROJECT_DIR$/src/Components/Utils/formatDate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JsTest.js" afterDir="false" />
+    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-17">
+      <change afterPath="$PROJECT_DIR$/src/Components/NavBar/NavBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Pages/AboutUs/AboutUs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Pages/Contact/Contact.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Utils/idGenerator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/AddTaskAndEditModal/AddTaskAndEditModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTaskAndEditModal/AddTaskAndEditModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Utils/idGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Utils/idGenerator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lesson-15" />
+        <entry key="$PROJECT_DIR$" value="lesson-17" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,7 +46,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-js-beg-02-todo-api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -173,7 +171,9 @@
       <workItem from="1616083877548" duration="10405000" />
       <workItem from="1616096849414" duration="11876000" />
       <workItem from="1616145909506" duration="3792000" />
-      <workItem from="1616171146072" duration="5932000" />
+      <workItem from="1616171146072" duration="10453000" />
+      <workItem from="1616183145125" duration="2691000" />
+      <workItem from="1616190294901" duration="1879000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -301,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615748095952</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="lesson-17">
+      <created>1616177542619</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1616177542619</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,6 +360,7 @@
     <MESSAGE value="lesson-15.1" />
     <MESSAGE value="lesson-15.2" />
     <MESSAGE value="lesson-15.3 finish" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson-15.3 finish" />
+    <MESSAGE value="lesson-17" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson-17" />
   </component>
 </project>
