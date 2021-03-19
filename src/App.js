@@ -1,11 +1,11 @@
 import './App.css';
-import ToDo from './Components/ToDo/ToDo';
+import ToDo from './Components/Pages/ToDo/ToDo';
+import React from "react";
 
 
 function App() {
     return (
         <div className="App">
-
             <ToDo/>
 
         </div>

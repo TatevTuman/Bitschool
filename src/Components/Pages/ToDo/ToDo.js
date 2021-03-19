@@ -1,24 +1,29 @@
 import React from "react";
-import Task from "../Task/Task";
+import Task from "../../Task/Task";
 import {Button, Col, Container, Row} from "react-bootstrap";
-import idGenerator from "../Utils/idGenerator";
-import Confirm from "../Confirm/Confirm";
-import AddTaskAndEditModal from "../AddTaskAndEditModal/AddTaskAndEditModal";
 
+import Confirm from "../../Confirm/Confirm";
+import AddTaskAndEditModal from "../../AddTaskAndEditModal/AddTaskAndEditModal";
+
+
+const API_HOST = "http://localhost:3001";
 
 class ToDo extends React.PureComponent {
 
     state = {
-        tasks: [
-            {_id: idGenerator(), title: "Guitar1", description: "description 1"},
-            {_id: idGenerator(), title: "Guitar2", description: "description 2"},
-            {_id: idGenerator(), title: "Guitar3", description: "description 3"}
-        ],
+        tasks: [],
 
         checkedTasks: new Set(),
         isOpenAddTaskModal: false,
         isOpenConfirm: false,
-        editableTask: null
+        editableTask: null,
+
+    }
+    toggleOpenConfirm = () => {
+        const {isOpenConfirm} = this.state
+        this.setState({
+            isOpenConfirm: !isOpenConfirm
+        })
     }
 
     toggleOpenAddTaskModal = () => {
@@ -28,32 +33,52 @@ class ToDo extends React.PureComponent {
         })
     }
 
-    toggleOpenConfirm = () => {
-        const {isOpenConfirm} = this.state
-        this.setState({
-            isOpenConfirm: !isOpenConfirm
-        })
-    }
 
     handleSubmit = (formData) => {
-        const tasks = [...this.state.tasks]
-        tasks.push({
-            _id: idGenerator(),
-            ...formData,
-        })
-        this.setState({
-                tasks
+        fetch(`${API_HOST}/task`, {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: {
+                "Content-Type": "application/json"
             }
-        )
+        })
+
+            .then(res => res.json())
+            .then(data => {
+                if (data.error)
+                    throw data.error
+                const tasks = [...this.state.tasks];
+                tasks.push(data);
+                this.setState({
+                    tasks
+                });
+            })
+            .catch(error => {
+                console.log("Some problem with add task", error)
+            })
     }
 
     handleDeleteTask = (_id) => {
-        const tasks = [...this.state.tasks]
-        const index = tasks.findIndex(task => task._id === _id);
-        tasks.splice(index, 1);
-        this.setState({
-            tasks
-        });
+        (async () => {
+            try {
+                const response = await fetch(`${API_HOST}/task/${_id}`, {
+                    method: "DELETE"
+                });
+                const data = await response.json();
+
+                if (data.error)
+                    throw data.error;
+
+                let tasks = [...this.state.tasks];
+                tasks = tasks.filter(task => task._id !== _id);
+                this.setState({
+                    tasks
+                });
+            } catch (error) {
+                console.log("Some problem with delete task", error);
+            }
+        })();
+
     }
 
     handleToggleCheckTasks = (_id) => {
@@ -68,17 +93,34 @@ class ToDo extends React.PureComponent {
         })
     }
 
-
     handleDeleteCheckedTasks = () => {
         const {checkedTasks} = this.state;
-        let tasks = [...this.state.tasks];
-        tasks = tasks.filter(task => !checkedTasks.has(task._id));
-        this.setState({
-            tasks,
-            checkedTasks: new Set()
-        });
+        fetch(`${API_HOST}/task`, {
+            method: "PATCH",
+            body: JSON.stringify({tasks: Array.from(checkedTasks)}),
+
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.error)
+                    throw data.error
+                let tasks = [...this.state.tasks];
+                tasks = tasks.filter(task => !checkedTasks.has(task._id));
+                this.setState({
+                    tasks,
+                    checkedTasks: new Set()
+                });
+            })
+            .catch(error => {
+                console.log("Some problem with delete checked tasks", error)
+            })
+
 
     }
+
     toggleCheckAll = () => {
         const {tasks} = this.state
         let checkedTasks = new Set(this.state.checkedTasks)
@@ -95,6 +137,23 @@ class ToDo extends React.PureComponent {
 
     }
 
+    componentDidMount() {
+        fetch(`${API_HOST}/task`, {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.error)
+                    throw data.error
+                this.setState({
+                    tasks: data
+                })
+            })
+            .catch(error => {
+                console.log("Some problem getting tasks from base", error)
+            })
+    }
+
     setEditableTask = (editableTask) => {
         this.setState({
             editableTask
@@ -105,13 +164,27 @@ class ToDo extends React.PureComponent {
             editableTask: null
         });
     }
+
+
     handleEditTask = (editableTask) => {
-        const tasks = [...this.state.tasks];
-        const idx = tasks.findIndex(task => task._id === editableTask._id);
-        tasks[idx] = editableTask;
-        this.setState({
-            tasks
-        });
+        (async () => {
+            const response = await fetch(`${API_HOST}/task/` + editableTask._id, {
+                method: "PUT",
+                body: JSON.stringify(editableTask),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            const data = await response.json();
+            const tasks = [...this.state.tasks];
+            const idx = tasks.findIndex(task => task._id === data._id);
+            tasks[idx] = data;
+            this.setState({
+                tasks
+            });
+
+        })()
+
 
     }
 
@@ -120,7 +193,7 @@ class ToDo extends React.PureComponent {
         const {checkedTasks, tasks, isOpenAddTaskModal, isOpenConfirm, editableTask} = this.state;
         const tasksJSX = tasks.map(task => {
             return <Col key={task._id}>
-                {/*  xs={12} sm={6} md={4} lg={3} */}
+
                 <Task task={task}
                       handleDeleteTask={this.handleDeleteTask}
                       handleToggleCheckTasks={this.handleToggleCheckTasks}
@@ -183,19 +256,18 @@ class ToDo extends React.PureComponent {
                 }
 
                 {
-                    isOpenAddTaskModal &&
-                    <AddTaskAndEditModal
+                    isOpenAddTaskModal && <AddTaskAndEditModal
                         onHide={this.toggleOpenAddTaskModal}
                         isAnyTaskChecked={!!checkedTasks.size}
                         onSubmit={this.handleSubmit}/>
                 }
 
                 {
-                    editableTask &&
-                    <AddTaskAndEditModal
+                    editableTask && <AddTaskAndEditModal
                         onHide={this.removeEditableTask}
-                        editableTask={editableTask}
                         onSubmit={this.handleEditTask}
+                        editableTask={editableTask}
+
                     />
                 }
             </>

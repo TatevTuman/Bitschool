@@ -1,23 +1,29 @@
 import React from "react";
 import {Component, createRef} from "react";
 import {Modal, Button, Form} from "react-bootstrap";
-import PropTypes, {bool} from "prop-types";
-
+import DatePicker from "react-datepicker";
+import formatDate from "../Utils/formatDate"
+import PropTypes from "prop-types";
 
 class AddTaskAndEditModal extends Component {
     constructor(props) {
         super(props);
         this.inputRef = createRef();
 
-         this.props.editableTask
-                ? this.state = {
-                    ...props.editableTask
-                } : this.state = {
-                    title: "",
-                    description: "",
-                }
+        this.state = {
+            title: "",
+            description: "",
+            ...props.editableTask,
+            date: props.editableTask ? new Date(props.editableTask.date) : new Date()
+
+        }
+    }
 
 
+    setDate = (date) => {
+        this.setState({
+            date
+        });
     }
 
     handleChange = (event) => {
@@ -33,10 +39,14 @@ class AddTaskAndEditModal extends Component {
             (type === 'keypress' && key !== 'Enter')
         )
             return
-
-        this.props.onSubmit(this.state);
+        const formData = {
+            ...this.state,
+            date: formatDate(this.state.date)
+        }
+        this.props.onSubmit(formData);
         this.props.onHide();
     }
+
 
     componentDidMount() {
         this.inputRef.current.focus();
@@ -44,8 +54,8 @@ class AddTaskAndEditModal extends Component {
     }
 
     render() {
-        const {onHide, isAnyTaskChecked} = this.props;
-        const {title, description} = this.state;
+        const {onHide, isAnyTaskChecked, editableTask} = this.props;
+        const {title, description, date} = this.state;
 
         return (
             <div>
@@ -58,7 +68,7 @@ class AddTaskAndEditModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            {this.props.editableTask ? "Edit task modal" : "Add task modal"}
+                            {editableTask ? "Edit task modal" : "Add task modal"}
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -70,8 +80,8 @@ class AddTaskAndEditModal extends Component {
                                 onChange={this.handleChange}
                                 onKeyPress={this.handleButton}
                                 value={title}
-                                disabled={isAnyTaskChecked}
                                 ref={this.inputRef}
+                                disabled={isAnyTaskChecked}
 
                             />
                         </Form.Group>
@@ -89,11 +99,18 @@ class AddTaskAndEditModal extends Component {
 
                             />
                         </Form.Group>
+
+                        <Form.Group>
+                            <DatePicker
+                                selected={date}
+                                onChange={date => this.setDate(date)}/>
+                        </Form.Group>
+
+
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="danger" onClick={onHide}>Close</Button>
                         <Button
-
                             onClick={this.handleButton}
                             disabled={isAnyTaskChecked}
                         >
@@ -109,7 +126,7 @@ class AddTaskAndEditModal extends Component {
 
 AddTaskAndEditModal.propTypes = {
     onHide: PropTypes.func.isRequired,
-    isAnyTaskChecked:bool.isRequired,
+    isAnyTaskChecked: PropTypes.bool.isRequired,
     onSubmit: PropTypes.func.isRequired,
     editableTask: PropTypes.string
 }

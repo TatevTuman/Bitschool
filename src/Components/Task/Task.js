@@ -24,7 +24,9 @@ const Task = ({
             </Row>
 
             <Row xs={1} md={2}>
-                <Col><h3 style={{color: "#ffc107"}}>{task.title}</h3> <p style={{color: "white"}}>{task.description}</p>
+                <Col><h3 style={{color: "#ffc107"}}>{task.title}</h3>
+                    <p style={{color: "white"}}>{task.description}</p>
+                    <p style={{color: "white"}}> {task.date.slice(0, 10)}</p>
                 </Col>
 
                 <Col>

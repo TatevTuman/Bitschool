@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-15.2">
-      <change afterPath="$PROJECT_DIR$/src/Components/AddTaskAndEditModal/AddTaskAndEditModal.js" afterDir="false" />
+    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-15.3 finish">
+      <change afterPath="$PROJECT_DIR$/src/Components/Utils/formatDate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JsTest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AddTaskModal/AddTaskModal.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/EditTaskModal/EditTaskModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EditTaskModal/EditTaskModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddTaskAndEditModal/AddTaskAndEditModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTaskAndEditModal/AddTaskAndEditModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Utils/idGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Utils/idGenerator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lesson-12" />
+        <entry key="$PROJECT_DIR$" value="lesson-15" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,7 +48,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../training" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-js-beg-02-todo-api" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -64,11 +69,11 @@
       <recent name="C:\Users\tatev\Desktop\bit-school\src\Photo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\Pages" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\Hoc" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\Checkout" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\AddTask" />
-      <recent name="C:\Users\tatev\Desktop\Bitschool\src\Photo" />
     </key>
   </component>
   <component name="RunManager">
@@ -151,7 +156,24 @@
       <workItem from="1615732778271" duration="2274000" />
       <workItem from="1615743144072" duration="1836000" />
       <workItem from="1615745021570" duration="2081000" />
-      <workItem from="1615747150836" duration="845000" />
+      <workItem from="1615747150836" duration="1533000" />
+      <workItem from="1615804324354" duration="845000" />
+      <workItem from="1615891593179" duration="2031000" />
+      <workItem from="1615895380641" duration="1058000" />
+      <workItem from="1615897800229" duration="632000" />
+      <workItem from="1615900346340" duration="1430000" />
+      <workItem from="1615903309506" duration="2182000" />
+      <workItem from="1615905806468" duration="1783000" />
+      <workItem from="1615907637731" duration="1793000" />
+      <workItem from="1615916161974" duration="1780000" />
+      <workItem from="1615917981952" duration="1358000" />
+      <workItem from="1615919798724" duration="714000" />
+      <workItem from="1616062203616" duration="82000" />
+      <workItem from="1616062588331" duration="703000" />
+      <workItem from="1616083877548" duration="10405000" />
+      <workItem from="1616096849414" duration="11876000" />
+      <workItem from="1616145909506" duration="3792000" />
+      <workItem from="1616171146072" duration="5932000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -272,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615745691993</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="lesson-15.3 finish">
+      <created>1615748095952</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1615748095952</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,6 +352,7 @@
     <MESSAGE value="lesson-15" />
     <MESSAGE value="lesson-15.1" />
     <MESSAGE value="lesson-15.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson-15.2" />
+    <MESSAGE value="lesson-15.3 finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson-15.3 finish" />
   </component>
 </project>
