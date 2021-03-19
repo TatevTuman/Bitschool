@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-17">
-      <change afterPath="$PROJECT_DIR$/src/Components/NavBar/NavBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Pages/AboutUs/AboutUs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Pages/Contact/Contact.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Utils/idGenerator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-18">
       <change beforePath="$PROJECT_DIR$/src/Components/AddTaskAndEditModal/AddTaskAndEditModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddTaskAndEditModal/AddTaskAndEditModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Hoc/WithScreenSize.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hoc/WithScreenSize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Utils/formatDate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/formatDate.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +167,7 @@
       <workItem from="1616145909506" duration="3792000" />
       <workItem from="1616171146072" duration="10453000" />
       <workItem from="1616183145125" duration="2691000" />
-      <workItem from="1616190294901" duration="1879000" />
+      <workItem from="1616190294901" duration="2327000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -308,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616177542619</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="lesson-18">
+      <created>1616192342525</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1616192342525</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,6 +362,7 @@
     <MESSAGE value="lesson-15.2" />
     <MESSAGE value="lesson-15.3 finish" />
     <MESSAGE value="lesson-17" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson-17" />
+    <MESSAGE value="lesson-18" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson-18" />
   </component>
 </project>

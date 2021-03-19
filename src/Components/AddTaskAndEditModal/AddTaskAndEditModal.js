@@ -2,7 +2,7 @@ import React from "react";
 import {Component, createRef} from "react";
 import {Modal, Button, Form} from "react-bootstrap";
 import DatePicker from "react-datepicker";
-import formatDate from "../Utils/formatDate"
+import formatDate from "../../Utils/formatDate"
 import PropTypes from "prop-types";
 
 class AddTaskAndEditModal extends Component {
