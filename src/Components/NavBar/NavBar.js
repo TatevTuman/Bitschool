@@ -3,12 +3,33 @@ import {NavLink} from "react-router-dom";
 
 
 const NavBar = () => {
+
+    const navItems = [
+
+        {
+            to: "/",
+            value: "Home",
+        },
+        {
+            to: "/aboutUs",
+            value: "About Us",
+        },
+        {
+            to: "/contact",
+            value: "Contact",
+        },
+    ]
+    const navItem = navItems.map((item,index) => {
+            return (
+                <NavLink key={index} className="nav-link" to={item.to}>{item.value}</NavLink>
+            )
+        }
+    );
+
     return (<div>
         <Navbar bg="dark" variant="dark">
             <Nav className="mr-auto">
-                <NavLink className="nav-link" to="/">Home</NavLink>
-                <NavLink className="nav-link" to="/aboutUs">About Us</NavLink>
-                <NavLink className="nav-link" to="/contact">Contact</NavLink>
+                {navItem}
             </Nav>
         </Navbar>
     </div>)

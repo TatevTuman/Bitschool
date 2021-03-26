@@ -34,7 +34,7 @@ const Confirm = (props) => {
 Confirm.propTypes = {
     onHide: PropTypes.func.isRequired,
     onSubmit:PropTypes.func.isRequired,
-    count: PropTypes.number,
+    count: PropTypes.number.isRequired,
 }
 
 export default Confirm;

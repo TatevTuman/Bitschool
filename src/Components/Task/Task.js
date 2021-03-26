@@ -5,6 +5,8 @@ import {Button, Container, Row, Col} from "react-bootstrap";
 import s from "./Task.module.css"
 import {memo} from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const Task = ({
                   task,
@@ -13,18 +15,20 @@ const Task = ({
                   isAnyTaskChecked,
                   isChecked,
                   setEditableTask,
+                  ...props
               }) => {
 
     const cls = [s.tasksBackground]
 
     return (
+
         <Container className={cls.join(" ")}>
             <Row>
                 <input onChange={() => handleToggleCheckTasks(task._id)} type="checkbox" checked={isChecked}/>
             </Row>
 
             <Row xs={1} md={2}>
-                <Col><h3 style={{color: "#ffc107"}}>{task.title}</h3>
+                <Col><Link to={"/task/"+ task._id}><h3 style={{color: "#ffc107"}}>{task.title}</h3></Link>
                     <p style={{color: "white"}}>{task.description}</p>
                     <p style={{color: "white"}}> {task.date.slice(0, 10)}</p>
                 </Col>
@@ -54,22 +58,25 @@ const Task = ({
         </Container>
 
     )
+
 }
 Task.propTypes = {
     task: PropTypes.shape({
         _id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired
+        description: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired
     }),
     handleDeleteTask: PropTypes.func.isRequired,
     handleToggleCheckTasks: PropTypes.func.isRequired,
     isAnyTaskChecked: PropTypes.bool.isRequired,
     isChecked: PropTypes.bool,
-    toggleCheckAll: PropTypes.func
+    toggleCheckAll: PropTypes.func,
+    setEditableTask: PropTypes.func
 }
 
 
-export default memo(Task);
+export default  withRouter (memo(Task));
 
 
 

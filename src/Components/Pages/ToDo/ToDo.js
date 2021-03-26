@@ -1,9 +1,9 @@
 import React from "react";
 import Task from "../../Task/Task";
 import {Button, Col, Container, Row} from "react-bootstrap";
-
 import Confirm from "../../Confirm/Confirm";
-import AddTaskAndEditModal from "../../AddTaskAndEditModal/AddTaskAndEditModal";
+import AddTaskAndEditModal from "../../AddAndEditModal/AddAndEditModal";
+
 
 
 const API_HOST = "http://localhost:3001";
@@ -281,6 +281,9 @@ class ToDo extends React.PureComponent {
 
                     />
                 }
+
+
+
             </>
 
         )

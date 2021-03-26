@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import formatDate from "../../Utils/formatDate"
 import PropTypes from "prop-types";
 
-class AddTaskAndEditModal extends Component {
+class AddAndEditModal extends Component {
     constructor(props) {
         super(props);
         this.inputRef = createRef();
@@ -123,7 +123,7 @@ class AddTaskAndEditModal extends Component {
     }
 }
 
-AddTaskAndEditModal.propTypes = {
+AddAndEditModal.propTypes = {
     onHide: PropTypes.func.isRequired,
     isAnyTaskChecked: PropTypes.bool,
     onSubmit: PropTypes.func.isRequired,
@@ -131,4 +131,4 @@ AddTaskAndEditModal.propTypes = {
 }
 
 
-export default AddTaskAndEditModal;
+export default AddAndEditModal;

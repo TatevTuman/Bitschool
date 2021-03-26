@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-18.1 removed unnecessary files">
+      <change afterPath="$PROJECT_DIR$/src/Components/Pages/NotFound/notFound.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTask.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTask.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddTaskAndEditModal/AddTaskAndEditModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddAndEditModal/AddAndEditModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Confirm/Confirm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Confirm/Confirm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NavBar/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NavBar/NavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/AboutUs/AboutUs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/AboutUs/AboutUs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,15 +25,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lesson-17" />
+        <entry key="$PROJECT_DIR$" value="lesson-18" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -59,11 +69,11 @@
       <recent name="C:\Users\tatev\Desktop\bit-school\src\Photo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\Pages\NotFound" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\public" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\Pages" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components" />
-      <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\Hoc" />
     </key>
   </component>
   <component name="RunManager">
@@ -165,7 +175,13 @@
       <workItem from="1616145909506" duration="3792000" />
       <workItem from="1616171146072" duration="10453000" />
       <workItem from="1616183145125" duration="2691000" />
-      <workItem from="1616190294901" duration="2734000" />
+      <workItem from="1616190294901" duration="2984000" />
+      <workItem from="1616407669428" duration="670000" />
+      <workItem from="1616583418986" duration="11289000" />
+      <workItem from="1616612844323" duration="3228000" />
+      <workItem from="1616673889222" duration="4574000" />
+      <workItem from="1616697824794" duration="4732000" />
+      <workItem from="1616753260583" duration="6390000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -314,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616192748808</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="lesson-18.1 removed unnecessary files">
+      <created>1616193162289</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1616193162289</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
