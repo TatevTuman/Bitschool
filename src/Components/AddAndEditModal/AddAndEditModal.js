@@ -19,7 +19,6 @@ class AddAndEditModal extends Component {
         }
     }
 
-
     setDate = (date) => {
         this.setState({
             date
@@ -44,7 +43,6 @@ class AddAndEditModal extends Component {
             date: formatDate(this.state.date)
         }
         this.props.onSubmit(formData);
-        this.props.onHide();
     }
 
 
@@ -99,6 +97,7 @@ class AddAndEditModal extends Component {
 
                             />
                         </Form.Group>
+
 
                         <Form.Group>
                             <DatePicker

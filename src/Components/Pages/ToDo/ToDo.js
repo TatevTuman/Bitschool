@@ -3,10 +3,11 @@ import Task from "../../Task/Task";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import Confirm from "../../Confirm/Confirm";
 import AddTaskAndEditModal from "../../AddAndEditModal/AddAndEditModal";
-
+import Spinner from "../../Spinner/Spinner";
 
 
 const API_HOST = "http://localhost:3001";
+
 
 class ToDo extends React.PureComponent {
 
@@ -17,6 +18,7 @@ class ToDo extends React.PureComponent {
         isOpenAddTaskModal: false,
         isOpenConfirm: false,
         editableTask: null,
+        loading: false,
 
     }
     toggleOpenConfirm = () => {
@@ -35,6 +37,7 @@ class ToDo extends React.PureComponent {
 
 
     handleSubmit = (formData) => {
+        this.setState({loading: true});
         fetch(`${API_HOST}/task`, {
             method: "POST",
             body: JSON.stringify(formData),
@@ -50,17 +53,26 @@ class ToDo extends React.PureComponent {
                 const tasks = [...this.state.tasks];
                 tasks.push(data);
                 this.setState({
-                    tasks
+                    tasks,
+                    isOpenAddTaskModal: false
+
                 });
             })
             .catch(error => {
                 console.log("Some problem with add task", error)
             })
+            .finally(() => {
+                this.setState({
+                    loading: false
+                })
+            });
+
+
     }
 
 
     handleDeleteTask = (_id) => {
-
+        this.setState({loading: true})
         fetch(`${API_HOST}/task/` + _id, {
             method: "DELETE"
         })
@@ -74,10 +86,12 @@ class ToDo extends React.PureComponent {
                 this.setState({
                     tasks
                 });
-
             })
             .catch(error => {
                 console.log("Some problem with delete task", error)
+            })
+            .finally(() => {
+                this.setState({loading: false})
             })
 
     }
@@ -95,6 +109,7 @@ class ToDo extends React.PureComponent {
     }
 
     handleDeleteCheckedTasks = () => {
+        this.setState({loading: true})
         const {checkedTasks} = this.state;
         fetch(`${API_HOST}/task`, {
             method: "PATCH",
@@ -112,13 +127,17 @@ class ToDo extends React.PureComponent {
                 tasks = tasks.filter(task => !checkedTasks.has(task._id));
                 this.setState({
                     tasks,
-                    checkedTasks: new Set()
+                    checkedTasks: new Set(),
+                    isOpenConfirm: false,
+
                 });
             })
             .catch(error => {
                 console.log("Some problem with delete checked tasks", error)
             })
-
+            .finally(() => {
+                this.setState({loading: false})
+            })
 
     }
 
@@ -168,7 +187,7 @@ class ToDo extends React.PureComponent {
 
 
     handleEditTask = (editableTask) => {
-
+        this.setState({loading: true});
         fetch(`${API_HOST}/task/` + editableTask._id, {
             method: "PUT",
             body: JSON.stringify(editableTask),
@@ -185,18 +204,24 @@ class ToDo extends React.PureComponent {
                 const idx = tasks.findIndex(task => task._id === editableTask._id);
                 tasks[idx] = editableTask;
                 this.setState({
-                    tasks
+                    tasks,
+                    editableTask: null
                 });
 
             })
             .catch(error => {
                 console.log("Some problem with edit task", error)
             })
+            .finally(() => {
+                this.setState({
+                    loading: false
+                })
+            })
     }
 
 
     render() {
-        const {checkedTasks, tasks, isOpenAddTaskModal, isOpenConfirm, editableTask} = this.state;
+        const {checkedTasks, tasks, isOpenAddTaskModal, isOpenConfirm, editableTask, loading} = this.state;
         const tasksJSX = tasks.map(task => {
             return <Col key={task._id}>
 
@@ -255,6 +280,7 @@ class ToDo extends React.PureComponent {
                         </Col>
                     </Row> : ""}
 
+
                 </Container>
 
                 {
@@ -281,7 +307,9 @@ class ToDo extends React.PureComponent {
 
                     />
                 }
-
+                {
+                    loading && <Spinner/>
+                }
 
 
             </>

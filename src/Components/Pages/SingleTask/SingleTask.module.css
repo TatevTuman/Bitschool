@@ -1,11 +1,21 @@
 .row{
     background-color: #343a40;
     color: white;
-    margin: 20px 90px;
+    margin: 8px 90px;
     border: 2px solid #106ecb;
-    border-radius: 7px;
+    border-radius: 4px;
 }
 
 .col{
     margin-top: 30px;
 }
+
+
+.rowBack{
+    background-color: #343a40;
+    margin: 8px 90px;
+    border: 2px solid #106ecb;
+    border-radius: 4px;
+    padding: 10px;
+}
+

@@ -7,6 +7,7 @@ import Contact from "./Components/Pages/Contact/Contact";
 import {Route, Switch, Redirect} from "react-router-dom";
 import notFound from "./Components/Pages/NotFound/notFound";
 import SinglePage from "./Components/Pages/SingleTask/SingleTask";
+import notFoundSingleTask from "./Components/Pages/NotFound/notFoundSingleTask";
 
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
         },{
             path: "/task/:id",
             component: SinglePage,
+            exact: true
+        },{
+            path: "/505",
+            component: notFoundSingleTask,
             exact: true
         },
     ]

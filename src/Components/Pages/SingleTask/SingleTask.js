@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faTrash} from "@fortawesome/free-solid-svg-icons";
 import s from "./SingleTask.module.css"
 import AddAndEditModal from "../../AddAndEditModal/AddAndEditModal";
-
+import Spinner from "../../Spinner/Spinner";
 
 
 const API_HOST = "http://localhost:3001";
@@ -13,7 +13,8 @@ class SingleTask extends Component {
 
     state = {
         singleTask: null,
-        isEditModal: false
+        isEditModal: false,
+        loading: false
     }
 
     toggleEditModal = () => {
@@ -23,7 +24,8 @@ class SingleTask extends Component {
     }
 
     handleEditSingleTask = (editTask) => {
-       const id= editTask._id;
+        this.setState({loading:true});
+        const id = editTask._id;
         fetch(`${API_HOST}/task/${id}`, {
             method: "PUT",
             body: JSON.stringify(editTask),
@@ -31,20 +33,25 @@ class SingleTask extends Component {
                 "Content-Type": "application/json"
             }
         })
-            .then(res=>res.json())
-            .then(data=>{
+            .then(res => res.json())
+            .then(data => {
                 if (data.error)
-                throw data.error
+                    throw data.error
                 this.setState({
-                    singleTask:data
+                    singleTask: data,
+                    isEditModal: false
                 })
             })
-            .catch(error=>{
-                console.log("Some problem with EdiT Single Task",error)
+            .catch(error => {
+                console.log("Some problem with EdiT Single Task", error)
+            })
+            .finally(()=>{
+                this.setState({loading:false});
             })
     }
 
     handleDeleteSingleTask = () => {
+        this.setState({loading:true});
         const id = this.state.singleTask._id;
         fetch(`${API_HOST}/task/${id}`, {
             method: "DELETE",
@@ -58,9 +65,17 @@ class SingleTask extends Component {
             .catch(error => {
                 console.log("Some problem with delete single task", error)
             })
+            .finally(()=>{
+                this.setState({loading:false});
+            })
+    }
+
+    goBackFromSingleTask = () => {
+        this.props.history.goBack()
     }
 
     componentDidMount() {
+        this.setState({loading:true});
         const {id} = this.props.match.params;
         fetch(`${API_HOST}/task/${id}`, {
             method: "GET"
@@ -74,13 +89,17 @@ class SingleTask extends Component {
                 })
             })
             .catch(error => {
+                this.props.history.push("/505")
                 console.log("Some error with Single Task Page", error)
+            })
+            .finally(()=>{
+                this.setState({loading:false});
             })
     }
 
     render() {
-        const {singleTask, isEditModal} = this.state;
-        if (!singleTask) return <p>Loading...</p>
+        const {singleTask, isEditModal,loading} = this.state;
+        if (!singleTask) return <p>{Spinner()}</p>
         return (
             <>
                 <Container>
@@ -108,6 +127,18 @@ class SingleTask extends Component {
                             </Button>
                         </Col>
                     </Row>
+
+                    <Row className={s.rowBack}>
+                        <Col>
+                            <Button
+                                variant="warning"
+                                style={{color: "white"}}
+                                onClick={this.goBackFromSingleTask}
+                            >Go Back
+                            </Button>
+                        </Col>
+                    </Row>
+
                 </Container>
 
                 {
@@ -118,14 +149,13 @@ class SingleTask extends Component {
 
                     />
                 }
+                {
+                    loading && <Spinner/>
+                }
             </>
         )
     }
 }
-
-
-
-
 
 
 export default SingleTask;

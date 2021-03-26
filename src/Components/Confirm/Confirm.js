@@ -1,12 +1,12 @@
-import { Button, Modal } from "react-bootstrap";
+import {Button, Modal} from "react-bootstrap";
 import PropTypes from "prop-types";
 
 const Confirm = (props) => {
-    const { onHide, onSubmit, count } = props;
+    const {onHide, onSubmit, count} = props;
 
-     const handleSubmit = () => {
+    const handleSubmit = () => {
         onSubmit();
-        onHide();
+
     }
     return (
 
@@ -19,10 +19,10 @@ const Confirm = (props) => {
             <Modal.Footer>
                 <Button variant="secondary" onClick={onHide}>
                     Close
-</Button>
+                </Button>
                 <Button variant="primary" onClick={handleSubmit}>
                     Delete
-</Button>
+                </Button>
             </Modal.Footer>
         </Modal>
 
@@ -33,7 +33,7 @@ const Confirm = (props) => {
 
 Confirm.propTypes = {
     onHide: PropTypes.func.isRequired,
-    onSubmit:PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
     count: PropTypes.number.isRequired,
 }
 

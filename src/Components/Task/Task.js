@@ -5,7 +5,7 @@ import {Button, Container, Row, Col} from "react-bootstrap";
 import s from "./Task.module.css"
 import {memo} from "react";
 import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import {Link} from "react-router-dom";
 
 const Task = ({
@@ -28,7 +28,7 @@ const Task = ({
             </Row>
 
             <Row xs={1} md={2}>
-                <Col><Link to={"/task/"+ task._id}><h3 style={{color: "#ffc107"}}>{task.title}</h3></Link>
+                <Col><Link to={"/task/" + task._id}><h3 style={{color: "#ffc107"}}>{task.title}</h3></Link>
                     <p style={{color: "white"}}>{task.description}</p>
                     <p style={{color: "white"}}> {task.date.slice(0, 10)}</p>
                 </Col>
@@ -76,7 +76,7 @@ Task.propTypes = {
 }
 
 
-export default  withRouter (memo(Task));
+export default withRouter(memo(Task));
 
 
 
