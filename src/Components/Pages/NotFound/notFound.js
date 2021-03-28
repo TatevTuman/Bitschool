@@ -15,7 +15,6 @@ class notFound extends Component {
 
     componentDidMount() {
 
-        console.log(this.state)
 
         switch (this.props.match.params.code) {
             case "404":

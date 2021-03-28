@@ -89,7 +89,7 @@ class SingleTask extends Component {
                 })
             })
             .catch(error => {
-                console.log("error", error)
+                console.log("Some problem with single page", error)
                 this.props.history.push("/error/" + error.status)
 
             })
