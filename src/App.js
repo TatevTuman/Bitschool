@@ -25,8 +25,8 @@ function App() {
             component: Contact,
             exact: true
         }, {
-            path: "/404",
-            component: notFound,
+            path: "/error/:code",
+              component: notFound,
             exact: true
         },{
             path: "/task/:id",
@@ -46,7 +46,7 @@ function App() {
 
             <Switch>
                 {page}
-                <Redirect to="/404"/>
+                <Redirect to="/error/404"/>
             </Switch>
 
         </div>

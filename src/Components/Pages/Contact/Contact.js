@@ -43,7 +43,11 @@ class Contact extends React.Component {
         const contactFormData = {...this.state}
         fetch(`${API_HOST}/form`, {
             method: "POST",
-            body: JSON.stringify({name: contactFormData.name,  email: contactFormData.email,  message: contactFormData.message }),
+            body: JSON.stringify({
+                name: contactFormData.name,
+                email: contactFormData.email,
+                message: contactFormData.message
+            }),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -55,7 +59,7 @@ class Contact extends React.Component {
                     throw data.error
                 this.props.history.push("/")
 
-                console.log(data)
+
             })
             .catch(error => {
                 this.setState({loading: false})
@@ -100,7 +104,6 @@ class Contact extends React.Component {
                 {
                     this.state.loading && <Spinner/>
                 }
-
 
             </>
 

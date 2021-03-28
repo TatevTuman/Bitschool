@@ -24,7 +24,7 @@ class SingleTask extends Component {
     }
 
     handleEditSingleTask = (editTask) => {
-        this.setState({loading:true});
+        this.setState({loading: true});
         const id = editTask._id;
         fetch(`${API_HOST}/task/${id}`, {
             method: "PUT",
@@ -45,13 +45,13 @@ class SingleTask extends Component {
             .catch(error => {
                 console.log("Some problem with EdiT Single Task", error)
             })
-            .finally(()=>{
-                this.setState({loading:false});
+            .finally(() => {
+                this.setState({loading: false});
             })
     }
 
     handleDeleteSingleTask = () => {
-        this.setState({loading:true});
+        this.setState({loading: true});
         const id = this.state.singleTask._id;
         fetch(`${API_HOST}/task/${id}`, {
             method: "DELETE",
@@ -63,7 +63,7 @@ class SingleTask extends Component {
                 this.props.history.push("/")
             })
             .catch(error => {
-                this.setState({loading:false});
+                this.setState({loading: false});
                 console.log("Some problem with delete single task", error)
             })
 
@@ -74,7 +74,7 @@ class SingleTask extends Component {
     }
 
     componentDidMount() {
-        this.setState({loading:true});
+        this.setState({loading: true});
         const {id} = this.props.match.params;
         fetch(`${API_HOST}/task/${id}`, {
             method: "GET",
@@ -85,18 +85,19 @@ class SingleTask extends Component {
                     throw data.error
                 this.setState({
                     singleTask: data,
-                    loading:false
+                    loading: false
                 })
             })
             .catch(error => {
-                this.props.history.push("/404")
+                console.log("error", error)
+                this.props.history.push("/error/" + error.status)
 
             })
 
     }
 
     render() {
-        const {singleTask, isEditModal,loading} = this.state;
+        const {singleTask, isEditModal, loading} = this.state;
         if (!singleTask || loading) return <Spinner/>
         return (
             <>
