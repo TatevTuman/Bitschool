@@ -63,11 +63,10 @@ class SingleTask extends Component {
                 this.props.history.push("/")
             })
             .catch(error => {
+                this.setState({loading:false});
                 console.log("Some problem with delete single task", error)
             })
-            .finally(()=>{
-                this.setState({loading:false});
-            })
+
     }
 
     goBackFromSingleTask = () => {
@@ -78,28 +77,27 @@ class SingleTask extends Component {
         this.setState({loading:true});
         const {id} = this.props.match.params;
         fetch(`${API_HOST}/task/${id}`, {
-            method: "GET"
+            method: "GET",
         })
             .then(res => res.json())
             .then(data => {
                 if (data.error)
                     throw data.error
                 this.setState({
-                    singleTask: data
+                    singleTask: data,
+                    loading:false
                 })
             })
             .catch(error => {
-                this.props.history.push("/505")
-                console.log("Some error with Single Task Page", error)
+                this.props.history.push("/404")
+
             })
-            .finally(()=>{
-                this.setState({loading:false});
-            })
+
     }
 
     render() {
         const {singleTask, isEditModal,loading} = this.state;
-        if (!singleTask) return <p>{Spinner()}</p>
+        if (!singleTask || loading) return <Spinner/>
         return (
             <>
                 <Container>

@@ -158,6 +158,7 @@ class ToDo extends React.PureComponent {
     }
 
     componentDidMount() {
+        this.setState({loading:true})
         fetch(`${API_HOST}/task`, {
             method: "GET"
         })
@@ -171,6 +172,9 @@ class ToDo extends React.PureComponent {
             })
             .catch(error => {
                 console.log("Some problem getting tasks from base", error)
+            })
+            .finally(()=>{
+                this.setState({loading:false})
             })
     }
 
