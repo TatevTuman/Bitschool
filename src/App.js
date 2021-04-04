@@ -7,6 +7,7 @@ import Contact from "./Components/Pages/Contact/Contact";
 import {Route, Switch, Redirect} from "react-router-dom";
 import notFound from "./Components/Pages/NotFound/notFound";
 import SinglePage from "./Components/Pages/SingleTask/SingleTask";
+import ContactFormWithHooks from "./Components/Pages/Contact/ContactFormWithHooks";
 
 
 
@@ -22,7 +23,7 @@ function App() {
             exact: true
         }, {
             path: "/contact",
-            component: Contact,
+            component: ContactFormWithHooks,
             exact: true
         }, {
             path: "/error/:code",
@@ -48,6 +49,8 @@ function App() {
                 {page}
                 <Redirect to="/error/404"/>
             </Switch>
+
+
 
         </div>
     );
