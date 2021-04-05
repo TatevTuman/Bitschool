@@ -6,7 +6,8 @@ import s from "./Contact.module.css"
 
 const API_HOST = "http://localhost:3001";
 const maxLength10 = maxLength(30);
-const minLength1 = minLength(1)
+const minLength1 = minLength(0)
+
 const ContactFormWithHooks = (props) => {
 
 
@@ -29,6 +30,29 @@ const ContactFormWithHooks = (props) => {
             value: "",
         },
     });
+
+
+    const inputsData = [
+        {
+            name: "name",
+            type: "text",
+            placeholder: "Your name"
+        },
+        {
+            name: "email",
+            type: "email",
+            placeholder: "Your e-mail"
+        },
+        {
+            name: "message",
+            type: null,
+            placeholder: "Your message",
+            as: "textarea",
+            rows: 3
+        },
+
+
+    ]
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -70,10 +94,8 @@ const ContactFormWithHooks = (props) => {
         })
             .then(res => res.json())
             .then(data => {
-
                 if (data.error)
                     throw data.error
-
                 props.history.push("/")
 
             })
@@ -85,7 +107,22 @@ const ContactFormWithHooks = (props) => {
             })
 
     }
-
+    const dataset = inputsData.map((data, index) => {
+        return (
+            <Form.Group key={index}>
+                <Form.Control
+                    type={data.type}
+                    placeholder={data.placeholder}
+                    name={data.name}
+                    onChange={handleChange}
+                    value={personInfo[data.name].value}
+                    as={undefined ?? data.as}
+                    rows={undefined ?? data.rows}
+                />
+                <Form.Text style={{color: "red"}}>{personInfo[data.name].error}</Form.Text>
+            </Form.Group>
+        )
+    })
 
     return (<div>
 
@@ -93,42 +130,8 @@ const ContactFormWithHooks = (props) => {
             <h2 style={{color: "dark"}}>Contact</h2>
 
             <Form onSubmit={handleSubmit}>
-                <Form.Group>
-                    <Form.Control
-                        name="name"
-                        type="text"
-                        placeholder="Name"
-                        onChange={handleChange}
-                        value={personInfo.name.value}
 
-                    />
-                    <Form.Text style={{color: "red"}}>{personInfo.name.error}</Form.Text>
-                </Form.Group>
-
-                <Form.Group>
-                    <Form.Control
-                        name="email"
-                        type="email"
-                        placeholder="Email"
-                        onChange={handleChange}
-                        value={personInfo.email.value}
-                    />
-                    <Form.Text style={{color: "red"}}>{personInfo.email.error}</Form.Text>
-                </Form.Group>
-
-                <Form.Group>
-                    <Form.Control
-                        name="message"
-                        type=""
-                        placeholder="Your message"
-                        onChange={handleChange}
-                        as="textarea"
-                        rows={3}
-                        value={personInfo.message.value}
-
-                    />
-                    <Form.Text style={{color: "red"}}>{personInfo.message.error}</Form.Text>
-                </Form.Group>
+                {dataset}
 
                 <Button
                     variant="primary"

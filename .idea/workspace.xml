@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-22">
-      <change afterPath="$PROJECT_DIR$/src/Components/Pages/Contact/ContactFormWithHooks.js" afterDir="false" />
+    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-23">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/Contact/Contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/Contact/Contact.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/Contact/ContactFormWithHooks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/Contact/ContactFormWithHooks.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lesson-21" />
+        <entry key="$PROJECT_DIR$" value="lesson-22" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -186,7 +187,8 @@
       <workItem from="1617285232017" duration="1030000" />
       <workItem from="1617293154744" duration="7582000" />
       <workItem from="1617529287060" duration="14179000" />
-      <workItem from="1617555709164" duration="7655000" />
+      <workItem from="1617555709164" duration="7947000" />
+      <workItem from="1617612328898" duration="1856000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -391,7 +393,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617537958472</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="lesson-23">
+      <created>1617563592768</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1617563592768</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -425,7 +434,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="06" />
     <MESSAGE value="lesson-06" />
     <MESSAGE value="lesson-07" />
     <MESSAGE value="lesson-07&#10;add bootstrap&#10;add css" />
@@ -450,6 +458,7 @@
     <MESSAGE value="lesson-21" />
     <MESSAGE value="lesson-21.1 with error page" />
     <MESSAGE value="lesson-22" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson-22" />
+    <MESSAGE value="lesson-23" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson-23" />
   </component>
 </project>

@@ -138,7 +138,7 @@ class Contact extends React.Component {
 
             <>
                 <Container className="mt-3">
-                    <h2 style={{color: "dark"}}>Contact</h2>
+                    <h2 style={{color: "dark"}}>Contact old</h2>
                     <Form onSubmit={(e) => e.preventDefault()}>
                         {dataset}
                         <Button
