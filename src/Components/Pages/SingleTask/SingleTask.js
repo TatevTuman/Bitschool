@@ -5,6 +5,7 @@ import {faEdit, faTrash} from "@fortawesome/free-solid-svg-icons";
 import s from "./SingleTask.module.css"
 import AddAndEditModal from "../../AddAndEditModal/AddAndEditModal";
 import Spinner from "../../Spinner/Spinner";
+import {singleTaskContext} from "../../../Context/Contexts";
 
 
 const API_HOST = "http://localhost:3001";
@@ -100,61 +101,74 @@ class SingleTask extends Component {
         const {singleTask, isEditModal, loading} = this.state;
         if (!singleTask || loading) return <Spinner/>
         return (
-            <>
-                <Container>
-                    <h2 style={{color: "dark"}}>Single Task</h2>
+            <singleTaskContext.Consumer>{
+                () => (
 
-                    <Row className={s.row}>
-                        <Col className={s.col}>
-                            <h3 style={{color: "#ffc107"}}>{singleTask.title}</h3>
-                            <p>{singleTask.description}</p>
-                        </Col>
+                        <>
+                            <Container>
+                                <h2 style={{color: "dark"}}>Single Task old</h2>
 
-                        <Col className={s.col}>
-                            <Button style={{backgroundColor: "#343a40"}}
-                                    variant="info"
-                                    onClick={this.toggleEditModal}
-                            >
-                                <FontAwesomeIcon icon={faEdit}/>
-                            </Button>
+                                <Row className={s.row}>
+                                    <Col className={s.col}>
+                                        <h3 style={{color: "#ffc107"}}>{singleTask.title}</h3>
+                                        <p>{singleTask.description}</p>
+                                    </Col>
 
-                            <Button style={{backgroundColor: "#343a40"}} className="ml-2"
-                                    variant="danger"
-                                    onClick={this.handleDeleteSingleTask}
-                            >
-                                <FontAwesomeIcon icon={faTrash}/>
-                            </Button>
-                        </Col>
-                    </Row>
+                                    <Col className={s.col}>
+                                        <Button style={{backgroundColor: "#343a40"}}
+                                                variant="info"
+                                                onClick={this.toggleEditModal}
+                                        >
+                                            <FontAwesomeIcon icon={faEdit}/>
+                                        </Button>
 
-                    <Row className={s.rowBack}>
-                        <Col>
-                            <Button
-                                variant="warning"
-                                style={{color: "white"}}
-                                onClick={this.goBackFromSingleTask}
-                            >Go Back
-                            </Button>
-                        </Col>
-                    </Row>
+                                        <Button style={{backgroundColor: "#343a40"}} className="ml-2"
+                                                variant="danger"
+                                                onClick={this.handleDeleteSingleTask}
+                                        >
+                                            <FontAwesomeIcon icon={faTrash}/>
+                                        </Button>
+                                    </Col>
+                                </Row>
 
-                </Container>
+                                <Row className={s.rowBack}>
+                                    <Col>
+                                        <Button
+                                            variant="warning"
+                                            style={{color: "white"}}
+                                            onClick={this.goBackFromSingleTask}
+                                        >Go Back
+                                        </Button>
+                                    </Col>
+                                </Row>
 
-                {
-                    isEditModal && <AddAndEditModal
-                        onHide={this.toggleEditModal}
-                        onSubmit={this.handleEditSingleTask}
-                        editableTask={singleTask}
+                            </Container>
 
-                    />
-                }
-                {
-                    loading && <Spinner/>
-                }
-            </>
+                            {
+                                isEditModal && <AddAndEditModal
+                                    onHide={this.toggleEditModal}
+                                    onSubmit={this.handleEditSingleTask}
+                                    editableTask={singleTask}
+
+                                />
+                            }
+                            {
+                                loading && <Spinner/>
+                            }
+                        </>
+
+                )
+            }
+            </singleTaskContext.Consumer>
         )
     }
 }
+
+
+
+
+
+
 
 
 export default SingleTask;

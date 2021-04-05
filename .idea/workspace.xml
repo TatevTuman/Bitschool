@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-23">
+      <change afterPath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTagComponent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTaskWithContext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Context/Contexts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Context/Providers/SingleTaskProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Pages/Contact/ContactFormWithHooks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/Contact/ContactFormWithHooks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/AboutUs/AboutUs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/AboutUs/AboutUs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JsTest.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lesson-22" />
+        <entry key="$PROJECT_DIR$" value="lesson-23" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -52,6 +60,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -60,11 +69,11 @@
       <recent name="C:\Users\tatev\Desktop\bit-school\src\Photo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tatev\Desktop\Bitschool\src\DEMO" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\Pages\NotFound" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\public" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\Pages" />
-      <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components" />
     </key>
   </component>
   <component name="RunManager">
@@ -186,7 +195,8 @@
       <workItem from="1617293154744" duration="7582000" />
       <workItem from="1617529287060" duration="14179000" />
       <workItem from="1617555709164" duration="7947000" />
-      <workItem from="1617612328898" duration="2593000" />
+      <workItem from="1617612328898" duration="14952000" />
+      <workItem from="1617641077363" duration="12230000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -405,7 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617615774838</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="lesson-23">
+      <created>1617616527484</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1617616527484</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
