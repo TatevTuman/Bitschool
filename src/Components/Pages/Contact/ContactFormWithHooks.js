@@ -8,7 +8,7 @@ const API_HOST = "http://localhost:3001";
 const maxLength10 = maxLength(30);
 const minLength1 = minLength(0)
 
-const ContactFormWithHooks = (props) => {
+const ContactFormWithHooks = () => {
 
 
     const [loading, setLoading] = useState(false)
@@ -96,14 +96,33 @@ const ContactFormWithHooks = (props) => {
             .then(data => {
                 if (data.error)
                     throw data.error
-                props.history.push("/")
+                setPersonInfo({
+                    name: {
+                        valid: false,
+                        error: null,
+                        value: "",
+                    },
+                    email: {
+                        valid: false,
+                        error: null,
+                        value: "",
+                    },
+                    message: {
+                        valid: false,
+                        error: null,
+                        value: "",
+                    }
+                })
 
             })
             .catch(error => {
 
                 setBackendError(error.message)
-                setLoading(false)
+
                 console.log("Some problem with Contact Form", error)
+            })
+            .finally(() => {
+                setLoading(false)
             })
 
     }
