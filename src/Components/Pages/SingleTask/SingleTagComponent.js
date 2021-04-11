@@ -3,12 +3,12 @@ import SingleTaskProvider from "../../../Context/Providers/SingleTaskProvider";
 import React from "react";
 import SingleTaskWithReducer from "./SingleTaskWithReducer";
 
-const SingleTaskComponent=(props)=>{
+const SingleTaskComponent=(props)=> {
     return (
 
-       /* <SingleTaskProvider>
-        <SingleTaskWithContext {...props}/>
-    </SingleTaskProvider>*/
+        /* <SingleTaskProvider>
+         <SingleTaskWithContext {...props}/>
+     </SingleTaskProvider>*/
         <SingleTaskWithReducer {...props}/>
 
     )
