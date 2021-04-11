@@ -6,10 +6,34 @@ const API_HOST = "http://localhost:3001";
 
 
 const SingleTaskProvider = (props) => {
-
+console.log(props)
     const [singleTask, setSingleTask] = useState(null)
     const [isEditModal, setIsEditModal] = useState(false)
     const [loading, setLoading] = useState(false)
+
+
+    useEffect(() => {
+            setLoading(true)
+            const {id} = props.match.params;
+            fetch(`${API_HOST}/task/${id}`, {
+                method: "GET",
+            })
+                .then(res => res.json())
+                .then(data => {
+
+                    if (data.error)
+                        throw data.error
+                    setLoading(false)
+                    setSingleTask(data)
+                })
+                .catch(error => {
+                    console.log("Some problem with single page", error)
+
+                    props.history.push("/error/" + error.status)
+
+                })
+
+    },[])
 
     const toggleEditModal = () => {
         setIsEditModal(!isEditModal)
@@ -65,28 +89,6 @@ const SingleTaskProvider = (props) => {
     }
 
 
-    useEffect(() => {
-        if(!singleTask) {
-            setLoading(true)
-            const {id} = props.match.params;
-            fetch(`${API_HOST}/task/${id}`, {
-                method: "GET",
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.error)
-                        throw data.error
-                    setLoading(false)
-                    setSingleTask(data)
-                })
-                .catch(error => {
-                    console.log("Some problem with single page", error)
-
-                    props.history.push("/error/" + error.status)
-
-                })
-        }
-    })
 
     return (<singleTaskContext.Provider
 

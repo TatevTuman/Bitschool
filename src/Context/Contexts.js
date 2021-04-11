@@ -1,5 +1,5 @@
-import {createContext} from "react";
+import React from "react";
 
-export  const singleTaskContext=createContext();
+export  const singleTaskContext=React.createContext();
 
 

@@ -8,6 +8,7 @@ import notFound from "./Components/Pages/NotFound/notFound";
 import ContactFormWithHooks from "./Components/Pages/Contact/ContactFormWithHooks";
 
 import SingleTaskComponent from "./Components/Pages/SingleTask/SingleTagComponent";
+import Counter from "./DEMO/Demo";
 
 
 function App() {
@@ -54,7 +55,7 @@ function App() {
                 {page}
                 <Redirect to="/error/404"/>
             </Switch>
-
+{/*<Counter/>*/}
 
         </div>
     );
