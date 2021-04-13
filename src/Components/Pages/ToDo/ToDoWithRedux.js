@@ -4,40 +4,15 @@ import {Button, Col, Container, Row} from "react-bootstrap";
 import Confirm from "../../Confirm/Confirm";
 import AddTaskAndEditModal from "../../AddAndEditModal/AddAndEditModal";
 import Spinner from "../../Spinner/Spinner";
+import {connect} from "react-redux";
 
 
 const API_HOST = "http://localhost:3001";
 
-
-class ToDo extends React.PureComponent {
-
-    state = {
-        tasks: [],
-
-        checkedTasks: new Set(),
-        isOpenAddTaskModal: false,
-        isOpenConfirm: false,
-        editableTask: null,
-        loading: false,
-
-    }
-    toggleOpenConfirm = () => {
-        const {isOpenConfirm} = this.state
-        this.setState({
-            isOpenConfirm: !isOpenConfirm
-        })
-    }
-
-    toggleOpenAddTaskModal = () => {
-        const {isOpenAddTaskModal} = this.state
-        this.setState({
-            isOpenAddTaskModal: !isOpenAddTaskModal
-        })
-    }
-
+class ToDoWithRedux extends React.PureComponent {
 
     handleSubmit = (formData) => {
-        this.setState({loading: true});
+        this.props.setOrRemLoading(true);
         fetch(`${API_HOST}/task`, {
             method: "POST",
             body: JSON.stringify(formData),
@@ -50,29 +25,20 @@ class ToDo extends React.PureComponent {
             .then(data => {
                 if (data.error)
                     throw data.error
-                const tasks = [...this.state.tasks];
-                tasks.push(data);
-                this.setState({
-                    tasks,
-                    isOpenAddTaskModal: false
-
-                });
+                this.props.addTask(data)
             })
             .catch(error => {
                 console.log("Some problem with add task", error)
             })
             .finally(() => {
-                this.setState({
-                    loading: false
-                })
+                this.props.setOrRemLoading(false);
             });
 
 
     }
 
-
     handleDeleteTask = (_id) => {
-        this.setState({loading: true})
+        this.props.setOrRemLoading(true);
         fetch(`${API_HOST}/task/` + _id, {
             method: "DELETE"
         })
@@ -80,37 +46,20 @@ class ToDo extends React.PureComponent {
             .then(data => {
                 if (data.error)
                     throw data.error
-                const tasks = [...this.state.tasks]
-                const index = tasks.findIndex(task => task._id === _id);
-                tasks.splice(index, 1);
-                this.setState({
-                    tasks
-                });
+                this.props.deleteOneTask(_id)
             })
             .catch(error => {
                 console.log("Some problem with delete task", error)
             })
             .finally(() => {
-                this.setState({loading: false})
+                this.props.setOrRemLoading(false);
             })
 
     }
 
-    handleToggleCheckTasks = (_id) => {
-        let checkedTasks = new Set(this.state.checkedTasks);
-        if (!checkedTasks.has(_id)) {
-            checkedTasks.add(_id)
-        } else {
-            checkedTasks.delete(_id)
-        }
-        this.setState({
-            checkedTasks
-        })
-    }
-
     handleDeleteCheckedTasks = () => {
-        this.setState({loading: true})
-        const {checkedTasks} = this.state;
+        this.props.setOrRemLoading(true);
+        const {checkedTasks} = this.props;
         fetch(`${API_HOST}/task`, {
             method: "PATCH",
             body: JSON.stringify({tasks: Array.from(checkedTasks)}),
@@ -123,42 +72,19 @@ class ToDo extends React.PureComponent {
             .then(data => {
                 if (data.error)
                     throw data.error
-                let tasks = [...this.state.tasks];
-                tasks = tasks.filter(task => !checkedTasks.has(task._id));
-                this.setState({
-                    tasks,
-                    checkedTasks: new Set(),
-                    isOpenConfirm: false,
-
-                });
+                this.props.deleteCheckedTasks();
             })
             .catch(error => {
                 console.log("Some problem with delete checked tasks", error)
             })
             .finally(() => {
-                this.setState({loading: false})
+                this.props.setOrRemLoading(false);
             })
 
     }
 
-    toggleCheckAll = () => {
-        const {tasks} = this.state
-        let checkedTasks = new Set(this.state.checkedTasks)
-        if (tasks.length === checkedTasks.size) {
-            checkedTasks.clear();
-        } else {
-            tasks.forEach(task => {
-                checkedTasks.add(task._id);
-            });
-        }
-        this.setState({
-            checkedTasks
-        });
-
-    }
-
     componentDidMount() {
-        this.setState({loading:true})
+        this.props.setOrRemLoading(true);
         fetch(`${API_HOST}/task`, {
             method: "GET"
         })
@@ -166,29 +92,24 @@ class ToDo extends React.PureComponent {
             .then(data => {
                 if (data.error)
                     throw data.error
-                this.setState({
-                    tasks: data
-                })
+                /*  this.setState({
+                      tasks: data
+                  })*/
+                this.props.getTasks(data);
+
             })
             .catch(error => {
                 console.log("Some problem getting tasks from base", error)
             })
-            .finally(()=>{
-                this.setState({loading:false})
+            .finally(() => {
+                this.props.setOrRemLoading(false);
             })
     }
 
     setEditableTask = (editableTask) => {
-        this.setState({
-            editableTask
-        });
+        this.props.setEditableTask2(editableTask)
     }
 
-    removeEditableTask = () => {
-        this.setState({
-            editableTask: null
-        });
-    }
 
     handleEditTask = (editableTask) => {
         this.setState({loading: true});
@@ -204,13 +125,7 @@ class ToDo extends React.PureComponent {
             .then(data => {
                 if (data.error)
                     throw data.error
-                const tasks = [...this.state.tasks];
-                const idx = tasks.findIndex(task => task._id === editableTask._id);
-                tasks[idx] = editableTask;
-                this.setState({
-                    tasks,
-                    editableTask: null
-                });
+                this.props.editOneTask(data)
 
             })
             .catch(error => {
@@ -223,45 +138,49 @@ class ToDo extends React.PureComponent {
             })
     }
 
-
     render() {
-        const {checkedTasks, tasks, isOpenAddTaskModal, isOpenConfirm, editableTask, loading} = this.state;
+        const {
+            tasks,
+            loading,
+            isOpenAddTaskModal,
+            checkedTasks,
+            isOpenConfirm,
+            editableTask,
+
+        } = this.props;
+
         const tasksJSX = tasks.map(task => {
             return <Col key={task._id}>
 
                 <Task task={task}
                       handleDeleteTask={this.handleDeleteTask}
-                      handleToggleCheckTasks={this.handleToggleCheckTasks}
+                      handleToggleCheckTasks={this.props.toggleChekTasks}
                       isAnyTaskChecked={!!checkedTasks.size}
                       isChecked={checkedTasks.has(task._id)}
-                      toggleCheckAll={this.toggleCheckAll}
+                      toggleCheckAll={this.props.toggleCheckAll}
                       setEditableTask={this.setEditableTask}
-
                 />
             </Col>
         });
-
         return (
             <>
                 <Container>
-                    <h2 style={{color: "dark"}}>T o D o Component old</h2>
+                    <h2 style={{color: "dark"}}>T o D o Component with redux</h2>
                     <Row>
                         <Col className="pt-3 pb-3" style={{backgroundColor: "#343a40"}}>
                             <Button variant="warning"
                                     style={{color: " #ffffff"}}
-                                    onClick={this.toggleOpenAddTaskModal}
+                                    onClick={this.props.toggleOpenAddTaskModal}
                                     disabled={!!checkedTasks.size}>
                                 Add Task
                             </Button>
                         </Col>
                     </Row>
 
-
                     <Row className="pt-3 pb-3 mt-2" style={{backgroundColor: "rgb(52, 58, 64)"}}>
                         <Col>
                             {tasksJSX.length ? tasksJSX : <p style={{color: "white"}}>No tasks!</p>}
                         </Col>
-
                     </Row>
 
                     {tasksJSX.length ? <Row className=" mt-2">
@@ -269,14 +188,14 @@ class ToDo extends React.PureComponent {
                         <Col className="pt-3 pb-3" style={{backgroundColor: "#343a40"}}>
 
                             <Button style={{backgroundColor: "#343a40"}}
-                                    onClick={this.toggleCheckAll}
+                                    onClick={this.props.toggleCheckAll}
                             >
-                                {this.state.checkedTasks.size === this.state.tasks.length ? "Remove Checked" : "Check All"}
+                                {this.props.checkedTasks.size === this.props.tasks.length ? "Remove Checked" : "Check All"}
                             </Button>
 
                             <Button className="ml-3" style={{backgroundColor: "#343a40"}}
                                     variant="danger"
-                                    onClick={this.toggleOpenConfirm}
+                                    onClick={this.props.toggleConfirmModal}
                                     disabled={!!!checkedTasks.size}>
                                 Delete All
                             </Button>
@@ -290,14 +209,14 @@ class ToDo extends React.PureComponent {
                 {
                     isOpenConfirm &&
                     <Confirm
-                        onHide={this.toggleOpenConfirm}
+                        onHide={this.props.toggleConfirmModal}
                         onSubmit={this.handleDeleteCheckedTasks}
                         count={checkedTasks.size}/>
                 }
 
                 {
                     isOpenAddTaskModal && <AddTaskAndEditModal
-                        onHide={this.toggleOpenAddTaskModal}
+                        onHide={this.props.toggleOpenAddTaskModal}
                         isAnyTaskChecked={!!checkedTasks.size}
                         onSubmit={this.handleSubmit}/>
 
@@ -305,7 +224,6 @@ class ToDo extends React.PureComponent {
 
                 {
                     editableTask && <AddTaskAndEditModal
-                        onHide={this.removeEditableTask}
                         onSubmit={this.handleEditTask}
                         editableTask={editableTask}
 
@@ -317,11 +235,71 @@ class ToDo extends React.PureComponent {
 
 
             </>
-
         )
     }
-
 }
 
+const mapStateToProps = (state) => {
+    const {
+        isOpenAddTaskModal,
+        tasks,
+        checkedTasks,
+        isOpenConfirm,
+        editableTask
 
-export default ToDo;
+    } = state.ToDoState
+    return {
+        tasks,
+        loading: state.loading,
+        isOpenAddTaskModal,
+        checkedTasks,
+        isOpenConfirm,
+        editableTask
+
+
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getTasks: (data) => {
+            dispatch({type: "GET_TASKS", data});
+        },
+        deleteOneTask: (_id) => {
+            dispatch({type: "DELETE_ONE_TASK", _id});
+        },
+        setOrRemLoading: (isLoading) => {
+            dispatch({type: "SET_OR_REMOVE_LOADING", isLoading});
+        },
+        toggleOpenAddTaskModal: () => {
+            dispatch({type: "TOGGLE_OPEN_ADD_TASK_MODAL"});
+        },
+        addTask: (data) => {
+            dispatch({type: "ADD_TASK", data});
+        },
+        toggleConfirmModal: () => {
+            dispatch({type: "TOGGLE_CONFIRM_MODAL"});
+        },
+
+        toggleChekTasks: (_id) => {
+            dispatch({type: "TOGGLE_CHECK_TASK", _id});
+        },
+        deleteCheckedTasks: () => {
+            dispatch({type: "DELETE_CHECKED_TASKS"})
+        },
+        toggleCheckAll: () => {
+            dispatch({type: "TOGGLE_CHECK_ALL"});
+
+        },
+        editOneTask: (data) => {
+            dispatch({type: "EDIT", data})
+        },
+        setEditableTask2:(data)=>{
+            dispatch({type:"SET_EDIT_TASK", data})
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ToDoWithRedux);
+
+

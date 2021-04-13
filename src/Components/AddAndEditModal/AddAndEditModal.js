@@ -123,7 +123,7 @@ class AddAndEditModal extends Component {
 }
 
 AddAndEditModal.propTypes = {
-    onHide: PropTypes.func.isRequired,
+/*    onHide: PropTypes.func.isRequired,*/
     isAnyTaskChecked: PropTypes.bool,
     onSubmit: PropTypes.func.isRequired,
     editableTask: PropTypes.object

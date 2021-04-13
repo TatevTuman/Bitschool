@@ -1,5 +1,5 @@
 import './App.css';
-import ToDo from './Components/Pages/ToDo/ToDo';
+import ToDo from "./Components/Pages/ToDo/ToDo";
 import React from "react";
 import NavBar from "./Components/NavBar/NavBar";
 import AboutUs from "./Components/Pages/AboutUs/AboutUs";
@@ -7,15 +7,16 @@ import {Route, Switch, Redirect} from "react-router-dom";
 import notFound from "./Components/Pages/NotFound/notFound";
 import ContactFormWithHooks from "./Components/Pages/Contact/ContactFormWithHooks";
 
-import SingleTaskComponent from "./Components/Pages/SingleTask/SingleTagComponent";
-import Counter from "./DEMO/Demo";
+import SingleTaskWithRedux from "./Components/Pages/SingleTask/SingleTaskWithRedux";
+import ToDoWithRedux from "./Components/Pages/ToDo/ToDoWithRedux";
+
 
 
 function App() {
     const pages = [
         {
             path: "/",
-            component: ToDo,
+            component: ToDoWithRedux,
             exact: true
         }, {
             path: "/aboutUs",
@@ -31,7 +32,7 @@ function App() {
             exact: true
         }, {
             path: "/task/:id",
-            component: SingleTaskComponent,
+            component: SingleTaskWithRedux,
 
             exact: true
         },
@@ -55,7 +56,6 @@ function App() {
                 {page}
                 <Redirect to="/error/404"/>
             </Switch>
-{/*<Counter/>*/}
 
         </div>
     );

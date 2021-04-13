@@ -67,7 +67,6 @@ class SingleTask extends Component {
                 this.setState({loading: false});
                 console.log("Some problem with delete single task", error)
             })
-
     }
 
     goBackFromSingleTask = () => {
@@ -92,7 +91,6 @@ class SingleTask extends Component {
             .catch(error => {
                 console.log("Some problem with single page", error)
                 this.props.history.push("/error/" + error.status)
-
             })
 
     }
@@ -103,7 +101,6 @@ class SingleTask extends Component {
         return (
             <singleTaskContext.Consumer>{
                 () => (
-
                         <>
                             <Container>
                                 <h2 style={{color: "dark"}}>Single Task old</h2>
@@ -143,7 +140,6 @@ class SingleTask extends Component {
                                 </Row>
 
                             </Container>
-
                             {
                                 isEditModal && <AddAndEditModal
                                     onHide={this.toggleEditModal}
@@ -156,7 +152,6 @@ class SingleTask extends Component {
                                 loading && <Spinner/>
                             }
                         </>
-
                 )
             }
             </singleTaskContext.Consumer>

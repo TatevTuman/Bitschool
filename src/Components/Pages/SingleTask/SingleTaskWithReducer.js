@@ -6,6 +6,8 @@ import AddAndEditModal from "../../AddAndEditModal/AddAndEditModal";
 import Spinner from "../../Spinner/Spinner";
 import React, {useEffect, useReducer} from "react";
 
+
+
 const API_HOST = "http://localhost:3001";
 
 const initialState = {
@@ -104,8 +106,6 @@ const SingleTaskWithReducer = (props) => {
             })
             .finally(() => {
                 dispatch({type: "false"})
-
-
             })
     }
 
@@ -189,5 +189,7 @@ const SingleTaskWithReducer = (props) => {
         </>
     )
 }
+
+
 
 export default SingleTaskWithReducer;
