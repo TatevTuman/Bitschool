@@ -17,17 +17,12 @@ import {
 
 class ToDoWithRedux extends React.PureComponent {
 
-
-
     componentDidMount() {
         this.props.getTasks()
     }
-
     setEditableTask = (editableTask) => {
-        this.props.setEditableTask2(editableTask)
+        this.props.setEditOneTask(editableTask)
     }
-
-
 
     render() {
         const {
@@ -126,7 +121,6 @@ class ToDoWithRedux extends React.PureComponent {
         )
     }
 }
-
 const mapStateToProps = (state) => {
     const {
         isOpenAddTaskModal,
@@ -151,41 +145,33 @@ const mapDispatchToProps = (dispatch) => {
         toggleOpenAddTaskModal: () => {
             dispatch({type: types.TOGGLE_OPEN_ADD_TASK_MODAL });
         },
-
         toggleConfirmModal: () => {
             dispatch({type: types.TOGGLE_CONFIRM_MODAL });
         },
-
         toggleChekTasks: (_id) => {
             dispatch({type: types.TOGGLE_CHECK_TASK, _id});
         },
-
         toggleCheckAll: () => {
             dispatch({type: types.TOGGLE_CHECK_ALL });
-
         },
         // new
         getTasks: () => {
             dispatch(getTasksThunk)
         },
-
         addTask: (data) => {
             dispatch((dispatch) => addTaskThunk(dispatch, data))
-
         },
         deleteOneTask: (_id) => {
             dispatch((dispatch) => deleteOneTaskThunk(dispatch, _id))
         },
-
         deleteCheckedTasks: (checkedTasks) => {
             dispatch((dispatch) => deleteCheckedTasksThunk(dispatch, checkedTasks))
         },
         editOneTask: (data) => {
             dispatch((dispatch) => editOneTaskThunk(dispatch, data))
-
         },
        //оld
-        setEditableTask2: (data) => {
+        setEditOneTask: (data) => {
             dispatch({type: types.SET_EDIT_TASK , data})
         },
         unsSetEditableTask: () => {

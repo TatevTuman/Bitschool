@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-26">
-      <change afterPath="$PROJECT_DIR$/src/Redux/Action.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/ActionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTaskWithRedux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTaskWithRedux.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDoWithRedux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDoWithRedux.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Context/Providers/SingleTaskProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Context/Providers/SingleTaskProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Store.js" afterDir="false" />
-    </list>
+    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-27" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lesson-25" />
+        <entry key="$PROJECT_DIR$" value="lesson-26" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -224,7 +214,7 @@
       <workItem from="1618512270162" duration="3418000" />
       <workItem from="1618572664187" duration="9253000" />
       <workItem from="1618586827101" duration="370000" />
-      <workItem from="1618600413264" duration="4476000" />
+      <workItem from="1618600413264" duration="5265000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -478,7 +468,21 @@
       <option name="project" value="LOCAL" />
       <updated>1618342409761</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="lesson-27">
+      <created>1618606760577</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1618606760577</updated>
+    </task>
+    <task id="LOCAL-00038" summary="lesson-27">
+      <created>1618606803994</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1618606803994</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -522,7 +526,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="lesson-08&#10;1. bootstrap in ToDo component &#10;2. Add Task works with Enter" />
     <MESSAGE value="lesson-09" />
     <MESSAGE value="lesson-09.02" />
     <MESSAGE value="lesson-10" />
@@ -547,6 +550,7 @@
     <MESSAGE value="lesson-24" />
     <MESSAGE value="lesson-25" />
     <MESSAGE value="lesson-26" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson-26" />
+    <MESSAGE value="lesson-27" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson-27" />
   </component>
 </project>
