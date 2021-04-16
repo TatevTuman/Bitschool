@@ -116,7 +116,7 @@ class ToDoWithRedux extends React.PureComponent {
                     editableTask && <AddTaskAndEditModal
                         onSubmit={this.props.editOneTask}
                         editableTask={editableTask}
-                        onHide={this.props.unsSetEditableTask2}
+                        onHide={this.props.unsSetEditableTask}
                     />
                 }
                 {
@@ -188,7 +188,7 @@ const mapDispatchToProps = (dispatch) => {
         setEditableTask2: (data) => {
             dispatch({type: types.SET_EDIT_TASK , data})
         },
-        unsSetEditableTask2: () => {
+        unsSetEditableTask: () => {
             dispatch({type: types.SET_EDIT_TASK, action: null})
         },
 
