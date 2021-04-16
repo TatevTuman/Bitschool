@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-25">
-      <change afterPath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTaskWithRedux.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDoWithRedux.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/Store.js" afterDir="false" />
+    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-26">
+      <change afterPath="$PROJECT_DIR$/src/Redux/Action.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Redux/ActionTypes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AddAndEditModal/AddAndEditModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddAndEditModal/AddAndEditModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTaskWithReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTaskWithReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DEMO/Demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/DEMO/Demo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTaskWithRedux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTaskWithRedux.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDoWithRedux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDoWithRedux.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Context/Providers/SingleTaskProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Context/Providers/SingleTaskProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +218,13 @@
       <workItem from="1618304677733" duration="733000" />
       <workItem from="1618305587845" duration="2853000" />
       <workItem from="1618322609541" duration="7537000" />
-      <workItem from="1618340022632" duration="2351000" />
+      <workItem from="1618340022632" duration="2968000" />
+      <workItem from="1618422108363" duration="15236000" />
+      <workItem from="1618472803873" duration="7621000" />
+      <workItem from="1618512270162" duration="3418000" />
+      <workItem from="1618572664187" duration="9253000" />
+      <workItem from="1618586827101" duration="370000" />
+      <workItem from="1618600413264" duration="4476000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -469,11 +471,28 @@
       <option name="project" value="LOCAL" />
       <updated>1618173239060</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="lesson-26">
+      <created>1618342409761</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1618342409761</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -503,7 +522,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="lesson-07&#10;add bootstrap&#10;add css" />
     <MESSAGE value="lesson-08&#10;1. bootstrap in ToDo component &#10;2. Add Task works with Enter" />
     <MESSAGE value="lesson-09" />
     <MESSAGE value="lesson-09.02" />
@@ -528,6 +546,7 @@
     <MESSAGE value="lesson-23" />
     <MESSAGE value="lesson-24" />
     <MESSAGE value="lesson-25" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson-25" />
+    <MESSAGE value="lesson-26" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson-26" />
   </component>
 </project>

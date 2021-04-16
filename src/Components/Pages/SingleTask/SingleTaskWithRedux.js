@@ -7,80 +7,56 @@ import AddAndEditModal from "../../AddAndEditModal/AddAndEditModal";
 import Spinner from "../../Spinner/Spinner";
 import {singleTaskContext} from "../../../Context/Contexts";
 import {connect} from "react-redux";
+import {
+    deleteOneTaskThunk,
+    editOneTaskThunk,
+    getSingleTaskThunk,
+    handleDeleteSingleTaskThunk,
+} from "../../../Redux/Action";
+import types from "../../../Redux/ActionTypes";
 
 
-const API_HOST = "http://localhost:3001";
 
 class SingleTaskWithRedux extends Component {
 
-    handleEditSingleTask = (editTask) => {
-        this.props.setOrRemLoading(true)
-        const id = editTask._id;
-        fetch(`${API_HOST}/task/${id}`, {
-            method: "PUT",
-            body: JSON.stringify(editTask),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.error)
-                    throw data.error
-
-                this.props.getSingleTask(data)
-                this.props.toggleEditModal()
-            })
-            .catch(error => {
-                console.log("Some problem with EdiT Single Task", error)
-            })
-            .finally(() => {
-                this.props.setOrRemLoading(false)
-            })
-    }
 
     handleDeleteSingleTask = () => {
-        this.props.setOrRemLoading(true)
-        const id = this.props.singleTask._id;
-        fetch(`${API_HOST}/task/${id}`, {
-            method: "DELETE",
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.error)
-                    throw data.error
-                this.props.history.push("/")
-            })
-            .catch(error => {
-                this.props.setOrRemLoading(false)
-                console.log("Some problem with delete single task", error)
-            })
+        const history=this.props.history
+        const id = this.props.singleTask._id
+        this.props.deleteSingleTask({id, history})
     }
 
     goBackFromSingleTask = () => {
         this.props.history.goBack()
     }
 
+
     componentDidMount() {
-        this.props.setOrRemLoading(true)
-        const {id} = this.props.match.params;
-        fetch(`${API_HOST}/task/${id}`, {
-            method: "GET",
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.error)
-                    throw data.error
-                this.props.getSingleTask(data)
-                this.props.setOrRemLoading(false)
+        const id = this.props.match.params.id;
+        const history = this.props.history;
 
-            })
-            .catch(error => {
-                console.log("Some problem with single page", error)
-                this.props.history.push("/error/" + error.status)
+        this.props.getSingleTask({id, history});
 
-            })
+        /*        this.props.setOrRemLoading(true)
+                const {id} = this.props.match.params;
+                fetch(`${API_HOST}/task/${id}`, {
+                    method: "GET",
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.error)
+                            throw data.error
+                        this.props.getSingleTask(data)
+                        this.props.setOrRemLoading(false)
+
+                    })
+                    .catch(error => {
+                        console.log("Some problem with single page", error)
+                        this.props.history.push("/error/" + error.status)
+
+                    })*/
     }
+
 
     render() {
         const {
@@ -115,6 +91,7 @@ class SingleTaskWithRedux extends Component {
                                     <Button style={{backgroundColor: "#343a40"}} className="ml-2"
                                             variant="danger"
                                             onClick={this.handleDeleteSingleTask}
+
                                     >
                                         <FontAwesomeIcon icon={faTrash}/>
                                     </Button>
@@ -136,7 +113,7 @@ class SingleTaskWithRedux extends Component {
                         {
                             isEditModal && <AddAndEditModal
                                 onHide={toggleEditModal}
-                                onSubmit={this.handleEditSingleTask}
+                                onSubmit={this.props.editOneTask}
                                 editableTask={singleTask}
 
                             />
@@ -155,30 +132,37 @@ class SingleTaskWithRedux extends Component {
 const mapStateToProps = (state) => {
     const {
         singleTask,
-        isEditModal
+        isEditModal,
 
     } = state.SingleTaskState
 
     return {
         singleTask,
         loading: state.loading,
-        isEditModal
+        isEditModal,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getSingleTask: (data) => {
-            dispatch({type: "GET_SINGLE_TASK", data})
-        },
-        setOrRemLoading: (isLoading) => {
-            dispatch({type: "SET_OR_REMOVE_LOADING", isLoading});
+            dispatch((dispatch) => getSingleTaskThunk(dispatch, data))
         },
         toggleEditModal: () => {
-            dispatch({type: "TOGGLE_EDIT_MODAL"});
-        }
+            dispatch({type: types.TOGGLE_EDIT_MODAL });
+        },
+        editOneTask: (data) => {
+            dispatch((dispatch) => editOneTaskThunk(dispatch, data,"singleTask"))
+        },
+
+        deleteOneTask: (_id) => {
+            dispatch((dispatch) => deleteOneTaskThunk(dispatch, _id))
+        },
+        deleteSingleTask: (data) => {
+            dispatch((dispatch) => handleDeleteSingleTaskThunk(dispatch,data))
+        },
+
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleTaskWithRedux);

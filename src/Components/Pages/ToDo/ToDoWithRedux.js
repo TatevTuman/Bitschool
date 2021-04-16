@@ -5,105 +5,22 @@ import Confirm from "../../Confirm/Confirm";
 import AddTaskAndEditModal from "../../AddAndEditModal/AddAndEditModal";
 import Spinner from "../../Spinner/Spinner";
 import {connect} from "react-redux";
+import types from "../../../Redux/ActionTypes";
+import {
+    getTasksThunk,
+    addTaskThunk,
+    deleteOneTaskThunk,
+    deleteCheckedTasksThunk,
+    editOneTaskThunk,
+} from "../../../Redux/Action"
 
-
-const API_HOST = "http://localhost:3001";
 
 class ToDoWithRedux extends React.PureComponent {
 
-    handleSubmit = (formData) => {
-        this.props.setOrRemLoading(true);
-        fetch(`${API_HOST}/task`, {
-            method: "POST",
-            body: JSON.stringify(formData),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
 
-            .then(res => res.json())
-            .then(data => {
-                if (data.error)
-                    throw data.error
-                this.props.addTask(data)
-            })
-            .catch(error => {
-                console.log("Some problem with add task", error)
-            })
-            .finally(() => {
-                this.props.setOrRemLoading(false);
-            });
-
-
-    }
-
-    handleDeleteTask = (_id) => {
-        this.props.setOrRemLoading(true);
-        fetch(`${API_HOST}/task/` + _id, {
-            method: "DELETE"
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.error)
-                    throw data.error
-                this.props.deleteOneTask(_id)
-            })
-            .catch(error => {
-                console.log("Some problem with delete task", error)
-            })
-            .finally(() => {
-                this.props.setOrRemLoading(false);
-            })
-
-    }
-
-    handleDeleteCheckedTasks = () => {
-        this.props.setOrRemLoading(true);
-        const {checkedTasks} = this.props;
-        fetch(`${API_HOST}/task`, {
-            method: "PATCH",
-            body: JSON.stringify({tasks: Array.from(checkedTasks)}),
-
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.error)
-                    throw data.error
-                this.props.deleteCheckedTasks();
-            })
-            .catch(error => {
-                console.log("Some problem with delete checked tasks", error)
-            })
-            .finally(() => {
-                this.props.setOrRemLoading(false);
-            })
-
-    }
 
     componentDidMount() {
-        this.props.setOrRemLoading(true);
-        fetch(`${API_HOST}/task`, {
-            method: "GET"
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.error)
-                    throw data.error
-                /*  this.setState({
-                      tasks: data
-                  })*/
-                this.props.getTasks(data);
-
-            })
-            .catch(error => {
-                console.log("Some problem getting tasks from base", error)
-            })
-            .finally(() => {
-                this.props.setOrRemLoading(false);
-            })
+        this.props.getTasks()
     }
 
     setEditableTask = (editableTask) => {
@@ -111,32 +28,6 @@ class ToDoWithRedux extends React.PureComponent {
     }
 
 
-    handleEditTask = (editableTask) => {
-        this.setState({loading: true});
-        fetch(`${API_HOST}/task/` + editableTask._id, {
-            method: "PUT",
-            body: JSON.stringify(editableTask),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(res => res.json())
-
-            .then(data => {
-                if (data.error)
-                    throw data.error
-                this.props.editOneTask(data)
-
-            })
-            .catch(error => {
-                console.log("Some problem with edit task", error)
-            })
-            .finally(() => {
-                this.setState({
-                    loading: false
-                })
-            })
-    }
 
     render() {
         const {
@@ -153,7 +44,8 @@ class ToDoWithRedux extends React.PureComponent {
             return <Col key={task._id}>
 
                 <Task task={task}
-                      handleDeleteTask={this.handleDeleteTask}
+
+                      handleDeleteTask={this.props.deleteOneTask}
                       handleToggleCheckTasks={this.props.toggleChekTasks}
                       isAnyTaskChecked={!!checkedTasks.size}
                       isChecked={checkedTasks.has(task._id)}
@@ -203,37 +95,33 @@ class ToDoWithRedux extends React.PureComponent {
                         </Col>
                     </Row> : ""}
 
-
                 </Container>
-
                 {
                     isOpenConfirm &&
                     <Confirm
                         onHide={this.props.toggleConfirmModal}
-                        onSubmit={this.handleDeleteCheckedTasks}
+                        onSubmit={()=>this.props.deleteCheckedTasks(checkedTasks)}
                         count={checkedTasks.size}/>
                 }
-
                 {
                     isOpenAddTaskModal && <AddTaskAndEditModal
                         onHide={this.props.toggleOpenAddTaskModal}
                         isAnyTaskChecked={!!checkedTasks.size}
-                        onSubmit={this.handleSubmit}/>
+                        onSubmit={this.props.addTask}
+
+                    />
 
                 }
-
                 {
                     editableTask && <AddTaskAndEditModal
-                        onSubmit={this.handleEditTask}
+                        onSubmit={this.props.editOneTask}
                         editableTask={editableTask}
-
+                        onHide={this.props.unsSetEditableTask2}
                     />
                 }
                 {
                     loading && <Spinner/>
                 }
-
-
             </>
         )
     }
@@ -255,49 +143,57 @@ const mapStateToProps = (state) => {
         checkedTasks,
         isOpenConfirm,
         editableTask
-
-
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getTasks: (data) => {
-            dispatch({type: "GET_TASKS", data});
-        },
-        deleteOneTask: (_id) => {
-            dispatch({type: "DELETE_ONE_TASK", _id});
-        },
-        setOrRemLoading: (isLoading) => {
-            dispatch({type: "SET_OR_REMOVE_LOADING", isLoading});
-        },
         toggleOpenAddTaskModal: () => {
-            dispatch({type: "TOGGLE_OPEN_ADD_TASK_MODAL"});
+            dispatch({type: types.TOGGLE_OPEN_ADD_TASK_MODAL });
         },
-        addTask: (data) => {
-            dispatch({type: "ADD_TASK", data});
-        },
+
         toggleConfirmModal: () => {
-            dispatch({type: "TOGGLE_CONFIRM_MODAL"});
+            dispatch({type: types.TOGGLE_CONFIRM_MODAL });
         },
 
         toggleChekTasks: (_id) => {
-            dispatch({type: "TOGGLE_CHECK_TASK", _id});
+            dispatch({type: types.TOGGLE_CHECK_TASK, _id});
         },
-        deleteCheckedTasks: () => {
-            dispatch({type: "DELETE_CHECKED_TASKS"})
-        },
+
         toggleCheckAll: () => {
-            dispatch({type: "TOGGLE_CHECK_ALL"});
+            dispatch({type: types.TOGGLE_CHECK_ALL });
 
         },
-        editOneTask: (data) => {
-            dispatch({type: "EDIT", data})
+        // new
+        getTasks: () => {
+            dispatch(getTasksThunk)
         },
-        setEditableTask2:(data)=>{
-            dispatch({type:"SET_EDIT_TASK", data})
-        }
+
+        addTask: (data) => {
+            dispatch((dispatch) => addTaskThunk(dispatch, data))
+
+        },
+        deleteOneTask: (_id) => {
+            dispatch((dispatch) => deleteOneTaskThunk(dispatch, _id))
+        },
+
+        deleteCheckedTasks: (checkedTasks) => {
+            dispatch((dispatch) => deleteCheckedTasksThunk(dispatch, checkedTasks))
+        },
+        editOneTask: (data) => {
+            dispatch((dispatch) => editOneTaskThunk(dispatch, data))
+
+        },
+       //оld
+        setEditableTask2: (data) => {
+            dispatch({type: types.SET_EDIT_TASK , data})
+        },
+        unsSetEditableTask2: () => {
+            dispatch({type: types.SET_EDIT_TASK, action: null})
+        },
+
     }
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToDoWithRedux);

@@ -1,4 +1,6 @@
-import {createStore} from "redux";
+import {createStore,applyMiddleware} from "redux";
+import thunk from 'redux-thunk';
+import types from "./ActionTypes";
 
 const initialState = {
 
@@ -16,12 +18,11 @@ const initialState = {
         isEditModal: false,
     }
 
-
 }
 const reduser = (state = initialState, action) => {
     switch (action.type) {
 
-        case "GET_TASKS": {
+        case types.GET_TASKS: {
             return {
                 ...state,
                 ToDoState: {
@@ -30,7 +31,7 @@ const reduser = (state = initialState, action) => {
                 }
             }
         }
-        case "DELETE_ONE_TASK": {
+        case types.DELETE_ONE_TASK : {
             let tasks = [...state.ToDoState.tasks];
             tasks = tasks.filter(task => task._id !== action._id);
             return {
@@ -41,13 +42,13 @@ const reduser = (state = initialState, action) => {
                 }
             }
         }
-        case "SET_OR_REMOVE_LOADING": {
+        case types.SET_OR_REMOVE_LOADING : {
             return {
                 ...state,
                 loading: action.isLoading
             }
         }
-        case "TOGGLE_OPEN_ADD_TASK_MODAL": {
+        case types.TOGGLE_OPEN_ADD_TASK_MODAL : {
             return {
                 ...state,
                 ToDoState: {
@@ -56,7 +57,7 @@ const reduser = (state = initialState, action) => {
                 }
             }
         }
-        case "ADD_TASK": {
+        case types.ADD_TASK : {
             let tasks = [...state.ToDoState.tasks];
             tasks.push(action.data);
             return {
@@ -68,7 +69,7 @@ const reduser = (state = initialState, action) => {
                 }
             }
         }
-        case "TOGGLE_CONFIRM_MODAL": {
+        case types.TOGGLE_CONFIRM_MODAL : {
             return {
                 ...state,
                 ToDoState: {
@@ -77,7 +78,7 @@ const reduser = (state = initialState, action) => {
                 }
             }
         }
-        case "TOGGLE_CHECK_TASK": {
+        case types.TOGGLE_CHECK_TASK : {
             let checkedTasks = new Set(state.ToDoState.checkedTasks);
             if (!checkedTasks.has(action._id)) {
                 checkedTasks.add(action._id)
@@ -92,7 +93,7 @@ const reduser = (state = initialState, action) => {
                 }
             }
         }
-        case "DELETE_CHECKED_TASKS": {
+        case types.DELETE_CHECKED_TASKS : {
             let tasks = [...state.ToDoState.tasks];
             tasks = tasks.filter(task => !state.ToDoState.checkedTasks.has(task._id));
             return {
@@ -105,7 +106,7 @@ const reduser = (state = initialState, action) => {
                 }
             }
         }
-        case "TOGGLE_CHECK_ALL": {
+        case types.TOGGLE_CHECK_ALL : {
             const {tasks} = state.ToDoState;
             let checkedTasks = new Set(state.ToDoState.checkedTasks);
             if (tasks.length === checkedTasks.size) {
@@ -123,7 +124,7 @@ const reduser = (state = initialState, action) => {
                 }
             }
         }
-        case "EDIT": {
+        case types.EDIT: {
             const tasks = [...state.ToDoState.tasks];
             const {data}=action;
             const idx = tasks.findIndex(task => task._id === data._id);
@@ -137,7 +138,7 @@ const reduser = (state = initialState, action) => {
                 }
             }
         }
-        case "SET_EDIT_TASK":{
+        case types.SET_EDIT_TASK :{
             return {
                 ...state,
                 ToDoState: {
@@ -146,17 +147,18 @@ const reduser = (state = initialState, action) => {
                 }
             }
         }
-        case "GET_SINGLE_TASK":{
+        case types.GET_SINGLE_TASK:{
             return{
                 ...state,
                 SingleTaskState: {
                     ...state.SingleTaskState,
-                    singleTask: action.data
+                    singleTask: action.data,
+
 
                 }
             }
         }
-        case "TOGGLE_EDIT_MODAL":{
+        case types.TOGGLE_EDIT_MODAL :{
             return {
                 ...state,
                 SingleTaskState: {
@@ -166,12 +168,17 @@ const reduser = (state = initialState, action) => {
             }
         }
 
+
         default:
             return state;
     }
 }
-const store = createStore(reduser);
+const store = createStore(reduser,  applyMiddleware(thunk));
 window.store = store;
 export default store;
+
+
+
+
 
 

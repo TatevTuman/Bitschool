@@ -6,7 +6,7 @@ const API_HOST = "http://localhost:3001";
 
 
 const SingleTaskProvider = (props) => {
-console.log(props)
+
     const [singleTask, setSingleTask] = useState(null)
     const [isEditModal, setIsEditModal] = useState(false)
     const [loading, setLoading] = useState(false)
