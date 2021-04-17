@@ -16,12 +16,11 @@ import {
 import types from "../../../Redux/ActionTypes";
 
 
-
 class SingleTaskWithRedux extends Component {
 
 
     handleDeleteSingleTask = () => {
-        const history=this.props.history
+        const history = this.props.history
         const id = this.props.singleTask._id
         this.props.deleteSingleTask({id, history})
     }
@@ -34,27 +33,7 @@ class SingleTaskWithRedux extends Component {
     componentDidMount() {
         const id = this.props.match.params.id;
         const history = this.props.history;
-
         this.props.getSingleTask({id, history});
-
-        /*        this.props.setOrRemLoading(true)
-                const {id} = this.props.match.params;
-                fetch(`${API_HOST}/task/${id}`, {
-                    method: "GET",
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.error)
-                            throw data.error
-                        this.props.getSingleTask(data)
-                        this.props.setOrRemLoading(false)
-
-                    })
-                    .catch(error => {
-                        console.log("Some problem with single page", error)
-                        this.props.history.push("/error/" + error.status)
-
-                    })*/
     }
 
 
@@ -138,7 +117,7 @@ const mapStateToProps = (state) => {
 
     return {
         singleTask,
-        loading: state.loading,
+        loading: state.GlobalState.loading,
         isEditModal,
     }
 }
@@ -149,17 +128,17 @@ const mapDispatchToProps = (dispatch) => {
             dispatch((dispatch) => getSingleTaskThunk(dispatch, data))
         },
         toggleEditModal: () => {
-            dispatch({type: types.TOGGLE_EDIT_MODAL });
+            dispatch({type: types.TOGGLE_EDIT_MODAL});
         },
         editOneTask: (data) => {
-            dispatch((dispatch) => editOneTaskThunk(dispatch, data,"singleTask"))
+            dispatch((dispatch) => editOneTaskThunk(dispatch, data, "singleTask"))
         },
 
         deleteOneTask: (_id) => {
             dispatch((dispatch) => deleteOneTaskThunk(dispatch, _id))
         },
         deleteSingleTask: (data) => {
-            dispatch((dispatch) => handleDeleteSingleTaskThunk(dispatch,data))
+            dispatch((dispatch) => handleDeleteSingleTaskThunk(dispatch, data))
         },
 
     }

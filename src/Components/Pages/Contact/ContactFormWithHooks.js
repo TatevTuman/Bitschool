@@ -10,7 +10,6 @@ const minLength1 = minLength(0)
 
 const ContactFormWithHooks = () => {
 
-
     const [loading, setLoading] = useState(false)
     const [backendError, setBackendError] = useState()
     const [personInfo, setPersonInfo] = useState({
@@ -31,7 +30,6 @@ const ContactFormWithHooks = () => {
         },
     });
 
-
     const inputsData = [
         {
             name: "name",
@@ -50,8 +48,6 @@ const ContactFormWithHooks = () => {
             as: "textarea",
             rows: 3
         },
-
-
     ]
 
     const handleChange = (e) => {
@@ -75,7 +71,6 @@ const ContactFormWithHooks = () => {
             }
         });
     }
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -124,7 +119,6 @@ const ContactFormWithHooks = () => {
             .finally(() => {
                 setLoading(false)
             })
-
     }
     const dataset = inputsData.map((data, index) => {
         return (
@@ -147,23 +141,17 @@ const ContactFormWithHooks = () => {
 
         <Container className="mt-3">
             <h2 style={{color: "dark"}}>Contact</h2>
-
             <Form onSubmit={handleSubmit}>
-
                 {dataset}
-
                 <Button
                     variant="primary"
                     type="submit"
                     disabled={personInfo.name.error || personInfo.email.error || personInfo.message.error}>
                     Send
                 </Button>
-
                 {backendError ? <h5 className={s.backendError}>{backendError.substr(6, 70)}</h5> : ""}
-
             </Form>
         </Container>
-
         {loading && <Spinner/>}
 
     </div>)

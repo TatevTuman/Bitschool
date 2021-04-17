@@ -132,7 +132,7 @@ const mapStateToProps = (state) => {
     } = state.ToDoState
     return {
         tasks,
-        loading: state.loading,
+        loading: state.GlobalState.loading,
         isOpenAddTaskModal,
         checkedTasks,
         isOpenConfirm,

@@ -1,14 +1,12 @@
 import './App.css';
-import ToDo from "./Components/Pages/ToDo/ToDo";
 import React from "react";
 import NavBar from "./Components/NavBar/NavBar";
 import AboutUs from "./Components/Pages/AboutUs/AboutUs";
 import {Route, Switch, Redirect} from "react-router-dom";
 import notFound from "./Components/Pages/NotFound/notFound";
-import ContactFormWithHooks from "./Components/Pages/Contact/ContactFormWithHooks";
-
 import SingleTaskWithRedux from "./Components/Pages/SingleTask/SingleTaskWithRedux";
 import ToDoWithRedux from "./Components/Pages/ToDo/ToDoWithRedux";
+import ContactFormWithRedux from "./Components/Pages/Contact/ContactFormWithRedux";
 
 
 
@@ -24,7 +22,7 @@ function App() {
             exact: true
         }, {
             path: "/contact",
-            component: ContactFormWithHooks,
+            component: ContactFormWithRedux,
             exact: true
         }, {
             path: "/error/:code",
