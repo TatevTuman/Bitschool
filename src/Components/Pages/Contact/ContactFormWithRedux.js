@@ -1,12 +1,8 @@
 import {Button, Container, Form} from "react-bootstrap";
 import Spinner from "../../Spinner/Spinner";
 import {connect} from "react-redux";
-import {
-    changeContactForm,
-    sendContactFromThunk
-} from "../../../Redux/Action"
-import React from "react";
-
+import {changeContactForm, sendContactFromThunk} from "../../../Redux/Action"
+import React, {useEffect, useRef} from "react";
 
 const inputsData = [
     {
@@ -37,11 +33,17 @@ const ContactFormWithRedux = (props) => {
         changeContactForm,
     } = props;
 
+    const firstInput=useRef(null)
+    useEffect(()=>{
+        firstInput.current.focus();
+    },[])
+
 
     const dataset = inputsData.map((data, index) => {
         return (
             <Form.Group key={index}>
                 <Form.Control
+                    ref={index===0? firstInput:null}
                     type={data.type}
                     placeholder={data.placeholder}
                     name={data.name}
@@ -58,7 +60,7 @@ const ContactFormWithRedux = (props) => {
     return (<div>
 
         <Container className="mt-3">
-            <h2 style={{color: "dark"}}>Contact</h2>
+            <h2 style={{color: "dark"}}>Contact with redux</h2>
             <Form onSubmit={(e) => e.preventDefault()}>
                 {dataset}
                 <Button

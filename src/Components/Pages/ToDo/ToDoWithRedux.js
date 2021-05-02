@@ -32,6 +32,7 @@ class ToDoWithRedux extends React.PureComponent {
             checkedTasks,
             isOpenConfirm,
             editableTask,
+            errorMassage,
 
         } = this.props;
 
@@ -53,6 +54,7 @@ class ToDoWithRedux extends React.PureComponent {
             <>
                 <Container>
                     <h2 style={{color: "dark"}}>T o D o Component with redux</h2>
+                    <h3 style={{color: "dark"}}>{errorMassage}</h3>
                     <Row>
                         <Col className="pt-3 pb-3" style={{backgroundColor: "#343a40"}}>
                             <Button variant="warning"
@@ -133,6 +135,7 @@ const mapStateToProps = (state) => {
     return {
         tasks,
         loading: state.GlobalState.loading,
+        errorMassage:state.GlobalState.errorMassage,
         isOpenAddTaskModal,
         checkedTasks,
         isOpenConfirm,

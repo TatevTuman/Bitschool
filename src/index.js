@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from "react-redux";
 import store from "./Redux/Store";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 ReactDOM.render(

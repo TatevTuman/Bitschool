@@ -15,15 +15,15 @@ export function getTasksThunk(dispatch) {
 
         })
         .catch(error => {
-            console.log("Some problem getting tasks from base", error)
+            dispatch({type: types.GET_ERROR_MASSAGE, error: error.message})
         })
         .finally(() => {
-            dispatch({type: types.SET_OR_REMOVE_LOADING , isLoading: false});
+            dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: false});
         })
 }
 
 export function addTaskThunk(dispatch, formData) {
-    dispatch({type: types.SET_OR_REMOVE_LOADING , isLoading: true});
+    dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: true});
     fetch(`${API_HOST}/task`, {
         method: "POST",
         body: JSON.stringify(formData),
@@ -37,17 +37,18 @@ export function addTaskThunk(dispatch, formData) {
             if (data.error)
                 throw data.error
             dispatch({type: types.ADD_TASK, data})
+            dispatch({type: types.GET_SUCCESS_MASSAGE, successMessage: "Task added!"})
         })
         .catch(error => {
-            console.log("Some problem with add task", error)
+            dispatch({type: types.GET_ERROR_MASSAGE, error: error.message})
         })
         .finally(() => {
-            dispatch({type: types.SET_OR_REMOVE_LOADING , isLoading: false});
+            dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: false});
         });
 }
 
 export function deleteOneTaskThunk(dispatch, _id) {
-    dispatch({type: types.SET_OR_REMOVE_LOADING , isLoading: true});
+    dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: true});
     fetch(`${API_HOST}/task/` + _id, {
         method: "DELETE"
     })
@@ -55,18 +56,20 @@ export function deleteOneTaskThunk(dispatch, _id) {
         .then(data => {
             if (data.error)
                 throw data.error
-            dispatch({type: types.DELETE_ONE_TASK , _id});
+            dispatch({type: types.DELETE_ONE_TASK, _id});
+            dispatch({type: types.GET_SUCCESS_MASSAGE, successMessage: "Task deleted!"})
         })
         .catch(error => {
-            console.log("Some problem with delete task", error)
+            //console.log("Some problem with delete task", error)
+            dispatch({type: types.GET_ERROR_MASSAGE, error: error.message})
         })
         .finally(() => {
-            dispatch({type: types.SET_OR_REMOVE_LOADING , isLoading: false});
+            dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: false});
         })
 }
 
 export function deleteCheckedTasksThunk(dispatch, checkedTasks) {
-    dispatch({type: types.SET_OR_REMOVE_LOADING , isLoading: true});
+    dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: true});
     fetch(`${API_HOST}/task`, {
         method: "PATCH",
         body: JSON.stringify({tasks: Array.from(checkedTasks)}),
@@ -80,17 +83,20 @@ export function deleteCheckedTasksThunk(dispatch, checkedTasks) {
             if (data.error)
                 throw data.error
             dispatch({type: types.DELETE_CHECKED_TASKS})
+            dispatch({type: types.GET_SUCCESS_MASSAGE, successMessage: "Tasks deleted!"})
         })
         .catch(error => {
-            console.log("Some problem with delete checked tasks", error)
+            //console.log("Some problem with delete checked tasks", error)
+            dispatch({type: types.GET_ERROR_MASSAGE, error: error.message})
         })
         .finally(() => {
-            dispatch({type: types.SET_OR_REMOVE_LOADING , isLoading: false});
+            dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: false});
         })
 }
 
-export function editOneTaskThunk(dispatch, editableTask, page="todo") {
-    dispatch({type: types.SET_OR_REMOVE_LOADING , isLoading: true});
+export function editOneTaskThunk(dispatch, editableTask, page = "todo") {
+    dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: true});
+
     fetch(`${API_HOST}/task/` + editableTask._id, {
         method: "PUT",
         body: JSON.stringify(editableTask),
@@ -103,27 +109,33 @@ export function editOneTaskThunk(dispatch, editableTask, page="todo") {
         .then(data => {
             if (data.error)
                 throw data.error
+            dispatch({type: types.GET_SUCCESS_MASSAGE, successMessage: "Task edited!"})
             if (page === "todo") {
-                dispatch({type: types.EDIT , data})
+                dispatch({type: types.EDIT, data})
                 //dispatch({type: types.TOGGLE_OPEN_ADD_TASK_MODAL});
+
             } else if (page === "singleTask") {
-                dispatch({type: types.GET_SINGLE_TASK , data})
+                dispatch({type: types.GET_SINGLE_TASK, data})
                 dispatch({type: types.TOGGLE_EDIT_MODAL});
+
             } else {
                 throw new Error("The Page is not Found!");
             }
+
         })
+
         .catch(error => {
-            console.log("Some problem with edit task", error)
+            // console.log("Some problem with edit task", error)
+            dispatch({type: types.GET_ERROR_MASSAGE, error: error.message})
         })
         .finally(() => {
-            dispatch({type: types.SET_OR_REMOVE_LOADING , isLoading: false});
+            dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: false});
         })
 }
 
-/////singleTask
-export  function getSingleTaskThunk(dispatch,data){
-    dispatch({type: types.SET_OR_REMOVE_LOADING , isLoading: true});
+//singleTask
+export function getSingleTaskThunk(dispatch, data) {
+    dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: true});
     //const {id} = this.props.match.params;
     fetch(`${API_HOST}/task/${data.id}`, {
         method: "GET",
@@ -132,19 +144,19 @@ export  function getSingleTaskThunk(dispatch,data){
         .then(data => {
             if (data.error)
                 throw data.error
-           /* this.props.getSingleTask(data)*/
             dispatch({type: types.GET_SINGLE_TASK, data})
-            dispatch({type: types.SET_OR_REMOVE_LOADING , isLoading: false});
+            dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: false});
         })
         .catch(error => {
-            console.log("Some problem with single page", error)
-           data.history.push("/error/" + error.status)
+            dispatch({type: types.GET_ERROR_MASSAGE, error: error.message})
+            data.history.push("/error/" + error.status)
 
 
         })
 }
-export function handleDeleteSingleTaskThunk(dispatch,data){
-    dispatch({type: types.SET_OR_REMOVE_LOADING , isLoading: true});
+
+export function handleDeleteSingleTaskThunk(dispatch, data) {
+    dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: true});
     const id = data.id;
     const history = data.history
     fetch(`${API_HOST}/task/${id}`, {
@@ -155,21 +167,22 @@ export function handleDeleteSingleTaskThunk(dispatch,data){
             if (data.error)
                 throw data.error
             history.push("/")
+            dispatch({type: types.GET_SUCCESS_MASSAGE, successMessage: "Task deleted!"})
+
         })
         .catch(error => {
-            dispatch({type: types.SET_OR_REMOVE_LOADING , isLoading: false});
-            console.log("Some problem with delete single task", error)
+            dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: false});
+            dispatch({type: types.GET_ERROR_MASSAGE, error: error.message})
         })
 }
-
 
 //contactForm
 export const changeContactForm = (target) => (dispatch) => {
-    dispatch({ type: types.CHANGE_CONTACT_FORM, target });
+    dispatch({type: types.CHANGE_CONTACT_FORM, target});
 }
 
 export const sendContactFromThunk = (personInfo, history) => (dispatch) => {
-    const personInfoCopy = { ...personInfo };
+    const personInfoCopy = {...personInfo};
     for (let key in personInfoCopy) {
         if (typeof personInfoCopy[key] === "object" && personInfoCopy[key].hasOwnProperty("value")) {
             personInfoCopy[key] = personInfoCopy[key].value;
@@ -177,7 +190,7 @@ export const sendContactFromThunk = (personInfo, history) => (dispatch) => {
             delete personInfoCopy[key];
         }
     }
-    dispatch({ type: types.SET_OR_REMOVE_LOADING, isLoading: true });
+    dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: true});
     fetch(`${API_HOST}/form`, {
         method: "POST",
         body: JSON.stringify(personInfoCopy),
@@ -192,10 +205,30 @@ export const sendContactFromThunk = (personInfo, history) => (dispatch) => {
             history.push("/");
         })
         .catch(error => {
-            dispatch({ type: types.SET_OR_REMOVE_LOADING, isLoading: false });
-            console.log("Some problem with Contact Form", error)
+            dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: false});
+            // console.log("Some problem with Contact Form", error)
+            dispatch({type: types.GET_ERROR_MASSAGE, error: error.message})
         });
 }
+
+//AddEndEditTaskModal
+
+
+export const changeModalInput = (target) => (dispatch) => {
+    dispatch({ type: types.CHANGE_MODAL_INPUT, target });
+}
+
+export const changeModalDate = (date) => (dispatch) => {
+    dispatch({ type: types.CHANGE_MODAL_DATE, date });
+}
+export const setEditableTaskToModalState = (editableTask) => (dispatch) => {
+    dispatch({ type: types.SET_EDITABLE_TASK_TO_MODAL_STATE, editableTask });
+}
+export const resetTaskModalState = () => (dispatch) => {
+    dispatch({ type: types.RESET_TASK_MODAL });
+}
+
+
 
 
 

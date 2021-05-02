@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-27">
-      <change afterPath="$PROJECT_DIR$/src/Components/Pages/Contact/ContactFormWithRedux.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/Reducers/ContactFormReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/Reducers/GlobalReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/Reducers/SingleTaskReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/Reducers/ToDoReducer.js" afterDir="false" />
+    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-28">
+      <change afterPath="$PROJECT_DIR$/src/Redux/Reducers/AddAndEditModalReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Pages/Contact/ContactFormWithHooks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/Contact/ContactFormWithHooks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTaskWithRedux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTaskWithRedux.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AddAndEditModal/AddAndEditModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddAndEditModal/AddAndEditModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/Contact/ContactFormWithRedux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/Contact/ContactFormWithRedux.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDoWithRedux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDoWithRedux.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Redux/Action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Action.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Redux/ActionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/ActionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Reducers/GlobalReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Reducers/GlobalReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Redux/Store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lesson-26" />
+        <entry key="$PROJECT_DIR$" value="lesson-27" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -233,7 +231,9 @@
       <workItem from="1618600413264" duration="5759000" />
       <workItem from="1618652014278" duration="6983000" />
       <workItem from="1618667092342" duration="1679000" />
-      <workItem from="1618669911513" duration="13856000" />
+      <workItem from="1618669911513" duration="15095000" />
+      <workItem from="1619780009620" duration="9892000" />
+      <workItem from="1619942890097" duration="3702000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -508,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618608614536</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="lesson-28">
+      <created>1618687461412</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1618687461412</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -552,7 +559,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="lesson-09" />
     <MESSAGE value="lesson-09.02" />
     <MESSAGE value="lesson-10" />
     <MESSAGE value="lesson-11" />
@@ -577,6 +583,7 @@
     <MESSAGE value="lesson-25" />
     <MESSAGE value="lesson-26" />
     <MESSAGE value="lesson-27" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson-27" />
+    <MESSAGE value="lesson-28" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson-28" />
   </component>
 </project>
