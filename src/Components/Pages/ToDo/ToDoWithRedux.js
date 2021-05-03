@@ -11,8 +11,9 @@ import {
     addTaskThunk,
     deleteOneTaskThunk,
     deleteCheckedTasksThunk,
-    editOneTaskThunk,
+    editOneTaskThunk, toggleTaskStatusThunk,
 } from "../../../Redux/Action"
+import Search from "../../Search/Search";
 
 
 class ToDoWithRedux extends React.PureComponent {
@@ -20,6 +21,7 @@ class ToDoWithRedux extends React.PureComponent {
     componentDidMount() {
         this.props.getTasks()
     }
+
     setEditableTask = (editableTask) => {
         this.props.setEditOneTask(editableTask)
     }
@@ -33,6 +35,7 @@ class ToDoWithRedux extends React.PureComponent {
             isOpenConfirm,
             editableTask,
             errorMassage,
+            toggleStatus,
 
         } = this.props;
 
@@ -47,6 +50,7 @@ class ToDoWithRedux extends React.PureComponent {
                       isChecked={checkedTasks.has(task._id)}
                       toggleCheckAll={this.props.toggleCheckAll}
                       setEditableTask={this.setEditableTask}
+                      toggleStatus={toggleStatus}
                 />
             </Col>
         });
@@ -91,13 +95,13 @@ class ToDoWithRedux extends React.PureComponent {
 
                         </Col>
                     </Row> : ""}
-
+                    <Search/>
                 </Container>
                 {
                     isOpenConfirm &&
                     <Confirm
                         onHide={this.props.toggleConfirmModal}
-                        onSubmit={()=>this.props.deleteCheckedTasks(checkedTasks)}
+                        onSubmit={() => this.props.deleteCheckedTasks(checkedTasks)}
                         count={checkedTasks.size}/>
                 }
                 {
@@ -123,6 +127,7 @@ class ToDoWithRedux extends React.PureComponent {
         )
     }
 }
+
 const mapStateToProps = (state) => {
     const {
         isOpenAddTaskModal,
@@ -135,27 +140,28 @@ const mapStateToProps = (state) => {
     return {
         tasks,
         loading: state.GlobalState.loading,
-        errorMassage:state.GlobalState.errorMassage,
+        errorMassage: state.GlobalState.errorMassage,
         isOpenAddTaskModal,
         checkedTasks,
         isOpenConfirm,
-        editableTask
+        editableTask,
+
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         toggleOpenAddTaskModal: () => {
-            dispatch({type: types.TOGGLE_OPEN_ADD_TASK_MODAL });
+            dispatch({type: types.TOGGLE_OPEN_ADD_TASK_MODAL});
         },
         toggleConfirmModal: () => {
-            dispatch({type: types.TOGGLE_CONFIRM_MODAL });
+            dispatch({type: types.TOGGLE_CONFIRM_MODAL});
         },
         toggleChekTasks: (_id) => {
             dispatch({type: types.TOGGLE_CHECK_TASK, _id});
         },
         toggleCheckAll: () => {
-            dispatch({type: types.TOGGLE_CHECK_ALL });
+            dispatch({type: types.TOGGLE_CHECK_ALL});
         },
         // new
         getTasks: () => {
@@ -173,13 +179,14 @@ const mapDispatchToProps = (dispatch) => {
         editOneTask: (data) => {
             dispatch((dispatch) => editOneTaskThunk(dispatch, data))
         },
-       //оld
+        //оld
         setEditOneTask: (data) => {
-            dispatch({type: types.SET_EDIT_TASK , data})
+            dispatch({type: types.SET_EDIT_TASK, data})
         },
         unsSetEditableTask: () => {
             dispatch({type: types.SET_EDIT_TASK, action: null})
         },
+        toggleStatus: (task) => dispatch(toggleTaskStatusThunk(task)),
 
     }
 

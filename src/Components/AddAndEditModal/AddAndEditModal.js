@@ -1,22 +1,18 @@
 import React, {useEffect, useRef} from "react";
-import {Component, createRef} from "react";
 import {Modal, Button, Form} from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import formatDate from "../../Utils/formatDate"
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {changeModalDate, changeModalInput, resetTaskModalState, setEditableTaskToModalState} from "../../Redux/Action";
+import {changeModalInput, resetTaskModalState, setEditableTaskToModalState} from "../../Redux/Action";
 
 const AddAndEditModal = (props) => {
 
 
     const {
-        //state
         editableTask,
-        //functions
         onHide,
         changeModalInput,
-        changeModalDate,
         setEditableTaskToModalState,
         onSubmit,
         resetTaskModalState
@@ -127,7 +123,6 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = {
     changeModalInput,
-    changeModalDate,
     setEditableTaskToModalState,
     resetTaskModalState
 }

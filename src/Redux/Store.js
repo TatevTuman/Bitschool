@@ -5,7 +5,9 @@ import SingleTaskReducer from "./Reducers/SingleTaskReducer";
 import GlobalReducer from "./Reducers/GlobalReducer";
 import ContactFormReducer from "./Reducers/ContactFormReducer";
 import AddAndEditModalReducer from "./Reducers/AddAndEditModalReducer";
+import SearchReducer from "./Reducers/SearchReducer";
 import logger from "redux-logger";
+
 
 
 const reducer = combineReducers({
@@ -14,6 +16,7 @@ const reducer = combineReducers({
     SingleTaskState: SingleTaskReducer,
     ContactFormState: ContactFormReducer,
     AddAndEditModalState: AddAndEditModalReducer,
+    SearchState:SearchReducer
 });
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 window.store = store;

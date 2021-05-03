@@ -1,6 +1,6 @@
 import React from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
+import {faTrash, faEdit, faCheck, faHourglass} from '@fortawesome/free-solid-svg-icons';
 import {Button, Container, Row, Col} from "react-bootstrap";
 import s from "./Task.module.css"
 import {memo} from "react";
@@ -15,6 +15,7 @@ const Task = ({
                   isAnyTaskChecked,
                   isChecked,
                   setEditableTask,
+                  toggleStatus,
                   ...props
               }) => {
 
@@ -49,6 +50,15 @@ const Task = ({
                             variant="danger"
                             disabled={isAnyTaskChecked}>
                         <FontAwesomeIcon icon={faTrash}/>
+                    </Button>
+                    <Button style={{backgroundColor: "#343a40"}} className="ml-2"
+                            onClick={()=>toggleStatus(task)}
+
+                            variant={task.status === "done" ? "success" : "secondary"}
+                    >
+                        {task.status === "done" && <FontAwesomeIcon icon={faCheck}/>}
+                        {task.status === "active" && <FontAwesomeIcon icon={faHourglass}/>}
+
                     </Button>
 
 

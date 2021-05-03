@@ -229,6 +229,39 @@ export const resetTaskModalState = () => (dispatch) => {
 }
 
 
+export const toggleTaskStatusThunk = (task) => (dispatch) => {
+    const status = task.status === "done" ? "active" : "done";
+    fetch(`${API_HOST}/task/${task._id}`, {
+        method: "PUT",
+        body: JSON.stringify({ status }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.error)
+                throw data.error;
+            dispatch({ type: types.EDIT, data });
+
+        })
+        .catch(error => {
+            dispatch({ type: types.SET_ERROR_MESSAGE, error: error.message });
+        });
+
+}
+
+export const setDropDownValueForSearch = (dropDown, value) => (dispatch) => {
+    dispatch({ type: types.SET_DROPDOWN_VARIANT, dropDown, value });
+}
+
+export const changeSearchValue = (target) => (dispatch) => {
+    dispatch({ type: types.CHANGE_SEARCH_VALUE, target });
+}
+
+export const setDate = (name, date) => (dispatch) => {
+    dispatch({ type: types.SET_DATE, name, date });
+}
 
 
 
