@@ -4,15 +4,18 @@ import DatePicker from "react-datepicker";
 import formatDate from "../../Utils/formatDate"
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {changeModalInput, resetTaskModalState, setEditableTaskToModalState} from "../../Redux/Action";
+import {changeModalDate, changeModalInput, resetTaskModalState, setEditableTaskToModalState} from "../../Redux/Action";
 
 const AddAndEditModal = (props) => {
 
 
     const {
+
         editableTask,
+
         onHide,
         changeModalInput,
+        changeModalDate,
         setEditableTaskToModalState,
         onSubmit,
         resetTaskModalState
@@ -89,7 +92,8 @@ const AddAndEditModal = (props) => {
                     <Form.Group>
                         <DatePicker
                             selected={date}
-                            onChange={date => this.setDate(date)}/>
+                            onChange={date => changeModalDate(date)}
+                        />
                     </Form.Group>
 
                 </Modal.Body>
@@ -108,7 +112,6 @@ const AddAndEditModal = (props) => {
         </div>)
 
 }
-
 AddAndEditModal.propTypes = {
     isAnyTaskChecked: PropTypes.bool,
     onSubmit: PropTypes.func.isRequired,
@@ -123,6 +126,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = {
     changeModalInput,
+    changeModalDate,
     setEditableTaskToModalState,
     resetTaskModalState
 }

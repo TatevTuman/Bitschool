@@ -2,9 +2,9 @@ import types from "./ActionTypes"
 
 const API_HOST = "http://localhost:3001";
 
-export function getTasksThunk(dispatch) {
+export function getTasksThunk(dispatch, search="") {
     dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: true});
-    fetch(`${API_HOST}/task`, {
+    fetch(`${API_HOST}/task/` + search, {
         method: "GET"
     })
         .then(res => res.json())

@@ -60,7 +60,7 @@ const ContactFormWithRedux = (props) => {
     return (<div>
 
         <Container className="mt-3">
-            <h2 style={{color: "dark"}}>Contact with redux</h2>
+            <h2 style={{color: "dark"}}>Contact</h2>
             <Form onSubmit={(e) => e.preventDefault()}>
                 {dataset}
                 <Button

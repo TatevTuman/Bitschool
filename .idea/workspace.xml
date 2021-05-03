@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-29">
-      <change afterPath="$PROJECT_DIR$/src/Redux/Reducers/SearchReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Search/Search.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Search/Search.module.css" afterDir="false" />
+    <list default="true" id="7bc62a9c-f5b5-4728-8020-6df0b429435d" name="Default Changelist" comment="lesson-30">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/AddAndEditModal/AddAndEditModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddAndEditModal/AddAndEditModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Pages/AboutUs/AboutUs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/AboutUs/AboutUs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/Contact/ContactFormWithHooks.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/Contact/ContactFormWithRedux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/Contact/ContactFormWithRedux.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTagComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTagComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTask.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/SingleTask/SingleTaskWithContext.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDo.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDoWithRedux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Pages/ToDo/ToDoWithRedux.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task/Task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Search/Search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Search/Search.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Hoc/WithScreenSize.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Redux/Action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/ActionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/ActionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lesson-28" />
+        <entry key="$PROJECT_DIR$" value="lesson-29" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -78,11 +80,11 @@
       <recent name="C:\Users\tatev\Desktop\bit-school\src\Photo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\DEMO" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\Pages\NotFound" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\public" />
       <recent name="C:\Users\tatev\Desktop\Bitschool\src" />
-      <recent name="C:\Users\tatev\Desktop\Bitschool\src\Components\Pages" />
     </key>
   </component>
   <component name="RunManager">
@@ -235,7 +237,8 @@
       <workItem from="1619949521664" duration="4699000" />
       <workItem from="1619973372726" duration="9832000" />
       <workItem from="1620030738291" duration="1788000" />
-      <workItem from="1620042623122" duration="393000" />
+      <workItem from="1620042623122" duration="4290000" />
+      <workItem from="1620049424390" duration="2225000" />
     </task>
     <task id="LOCAL-00001" summary="lesson08">
       <created>1613656072820</created>
@@ -524,7 +527,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619947160131</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="lesson-30">
+      <created>1620043337881</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1620043337881</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,7 +578,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="lesson-10" />
     <MESSAGE value="lesson-11" />
     <MESSAGE value="lesson-12" />
     <MESSAGE value="lesson-12.1" />
@@ -593,6 +602,7 @@
     <MESSAGE value="lesson-27" />
     <MESSAGE value="lesson-28" />
     <MESSAGE value="lesson-29" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson-29" />
+    <MESSAGE value="lesson-30" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson-30" />
   </component>
 </project>

@@ -1,4 +1,4 @@
-import s from "./Search.module.css"
+
 import {Form, Button, DropdownButton, Dropdown, Container, Row, Col} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import DatePicker from 'react-datepicker';
@@ -77,8 +77,10 @@ const Search = (props) => {
     const statusItems = statusVariants.map((variant, index) => {
         return (
             <Dropdown.Item
-                onClick={() => setDropDownValueForSearch("status", variant.value)}
+                name={"status"}
                 key={index}
+                onClick={() => setDropDownValueForSearch("status", variant.value)}
+
             >
                 {variant.label}
             </Dropdown.Item>
@@ -122,9 +124,10 @@ const Search = (props) => {
                             <Form.Group>
                                 Created Late:
                                 <DatePicker
-
+                                    name={"create_lte"}
                                     selected={create_lte}
                                     onChange={date => setDate("create_lte", date)}
+                                    dateFormat={"yyyy-MM-dd"}
                                 />
                             </Form.Group>
                         </Col>
@@ -132,7 +135,7 @@ const Search = (props) => {
                             <Form.Group>
                                 Created Greater:
                                 <DatePicker
-
+                                    name={"create_gte"}
                                     selected={create_gte}
                                     onChange={date => setDate("create_gte", date)}
                                 />
@@ -145,6 +148,7 @@ const Search = (props) => {
                             <Form.Group>
                                 Completed Late:
                                 <DatePicker
+                                    name={"complete_lte"}
                                     selected={complete_lte}
                                     onChange={date => setDate("complete_lte", date)}
                                 />
@@ -155,6 +159,7 @@ const Search = (props) => {
                             <Form.Group>
                                 Completed Greater:
                                 <DatePicker
+                                    name={"complete_gte"}
                                     selected={complete_gte}
                                     onChange={date => setDate("complete_gte", date)}
                                 />

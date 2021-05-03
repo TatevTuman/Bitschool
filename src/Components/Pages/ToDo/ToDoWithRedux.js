@@ -11,7 +11,8 @@ import {
     addTaskThunk,
     deleteOneTaskThunk,
     deleteCheckedTasksThunk,
-    editOneTaskThunk, toggleTaskStatusThunk,
+    editOneTaskThunk,
+    toggleTaskStatusThunk,
 } from "../../../Redux/Action"
 import Search from "../../Search/Search";
 
@@ -19,11 +20,11 @@ import Search from "../../Search/Search";
 class ToDoWithRedux extends React.PureComponent {
 
     componentDidMount() {
-        this.props.getTasks()
+        this.props.getTasks(this.props.location.search)
     }
 
     setEditableTask = (editableTask) => {
-        this.props.setEditOneTask(editableTask)
+       this.props.setEditOneTask(editableTask)
     }
 
     render() {
@@ -36,6 +37,16 @@ class ToDoWithRedux extends React.PureComponent {
             editableTask,
             errorMassage,
             toggleStatus,
+            //func
+            toggleOpenAddTaskModal,
+            toggleConfirmModal,
+            toggleChekTasks,
+            deleteOneTask,
+            toggleCheckAll,
+            deleteCheckedTasks,
+            editOneTask,
+            addTask,
+            unsSetEditableTask,
 
         } = this.props;
 
@@ -44,11 +55,11 @@ class ToDoWithRedux extends React.PureComponent {
 
                 <Task task={task}
 
-                      handleDeleteTask={this.props.deleteOneTask}
-                      handleToggleCheckTasks={this.props.toggleChekTasks}
+                      handleDeleteTask={deleteOneTask}
+                      handleToggleCheckTasks={toggleChekTasks}
                       isAnyTaskChecked={!!checkedTasks.size}
                       isChecked={checkedTasks.has(task._id)}
-                      toggleCheckAll={this.props.toggleCheckAll}
+                      toggleCheckAll={toggleCheckAll}
                       setEditableTask={this.setEditableTask}
                       toggleStatus={toggleStatus}
                 />
@@ -57,13 +68,13 @@ class ToDoWithRedux extends React.PureComponent {
         return (
             <>
                 <Container>
-                    <h2 style={{color: "dark"}}>T o D o Component with redux</h2>
+                    <h2 style={{color: "dark"}}>T o D o Component</h2>
                     <h3 style={{color: "dark"}}>{errorMassage}</h3>
                     <Row>
                         <Col className="pt-3 pb-3" style={{backgroundColor: "#343a40"}}>
                             <Button variant="warning"
                                     style={{color: " #ffffff"}}
-                                    onClick={this.props.toggleOpenAddTaskModal}
+                                    onClick={toggleOpenAddTaskModal}
                                     disabled={!!checkedTasks.size}>
                                 Add Task
                             </Button>
@@ -81,14 +92,14 @@ class ToDoWithRedux extends React.PureComponent {
                         <Col className="pt-3 pb-3" style={{backgroundColor: "#343a40"}}>
 
                             <Button style={{backgroundColor: "#343a40"}}
-                                    onClick={this.props.toggleCheckAll}
+                                    onClick={toggleCheckAll}
                             >
-                                {this.props.checkedTasks.size === this.props.tasks.length ? "Remove Checked" : "Check All"}
+                                {checkedTasks.size === tasks.length ? "Remove Checked" : "Check All"}
                             </Button>
 
                             <Button className="ml-3" style={{backgroundColor: "#343a40"}}
                                     variant="danger"
-                                    onClick={this.props.toggleConfirmModal}
+                                    onClick={toggleConfirmModal}
                                     disabled={!!!checkedTasks.size}>
                                 Delete All
                             </Button>
@@ -100,26 +111,27 @@ class ToDoWithRedux extends React.PureComponent {
                 {
                     isOpenConfirm &&
                     <Confirm
-                        onHide={this.props.toggleConfirmModal}
-                        onSubmit={() => this.props.deleteCheckedTasks(checkedTasks)}
+                        onHide={toggleConfirmModal}
+                        onSubmit={() =>deleteCheckedTasks(checkedTasks)}
                         count={checkedTasks.size}/>
                 }
                 {
                     isOpenAddTaskModal && <AddTaskAndEditModal
-                        onHide={this.props.toggleOpenAddTaskModal}
+                        onHide={toggleOpenAddTaskModal}
                         isAnyTaskChecked={!!checkedTasks.size}
-                        onSubmit={this.props.addTask}
+                        onSubmit={addTask}
 
                     />
 
                 }
                 {
                     editableTask && <AddTaskAndEditModal
-                        onSubmit={this.props.editOneTask}
+                        onSubmit={editOneTask}
                         editableTask={editableTask}
-                        onHide={this.props.unsSetEditableTask}
+                        onHide={unsSetEditableTask}
                     />
                 }
+
                 {
                     loading && <Spinner/>
                 }
@@ -163,9 +175,8 @@ const mapDispatchToProps = (dispatch) => {
         toggleCheckAll: () => {
             dispatch({type: types.TOGGLE_CHECK_ALL});
         },
-        // new
-        getTasks: () => {
-            dispatch(getTasksThunk)
+        getTasks: (search) => {
+            dispatch((dispatch) => getTasksThunk(dispatch, search))
         },
         addTask: (data) => {
             dispatch((dispatch) => addTaskThunk(dispatch, data))
@@ -179,7 +190,6 @@ const mapDispatchToProps = (dispatch) => {
         editOneTask: (data) => {
             dispatch((dispatch) => editOneTaskThunk(dispatch, data))
         },
-        //оld
         setEditOneTask: (data) => {
             dispatch({type: types.SET_EDIT_TASK, data})
         },
