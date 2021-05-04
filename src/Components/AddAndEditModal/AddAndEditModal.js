@@ -8,11 +8,8 @@ import {changeModalDate, changeModalInput, resetTaskModalState, setEditableTaskT
 
 const AddAndEditModal = (props) => {
 
-
     const {
-
         editableTask,
-
         onHide,
         changeModalInput,
         changeModalDate,
@@ -71,7 +68,6 @@ const AddAndEditModal = (props) => {
                             onKeyPress={handleS}
                             ref={inputRef}
                             value={title}
-                            //disabled={isAnyTaskChecked}
 
                         />
                     </Form.Group>
@@ -85,7 +81,6 @@ const AddAndEditModal = (props) => {
                             placeholder="Description"
                             onChange={(e) => changeModalInput(e.target)}
                             value={description}
-                            // disabled={isAnyTaskChecked}
 
                         />
                     </Form.Group>

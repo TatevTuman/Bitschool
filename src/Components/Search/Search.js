@@ -1,8 +1,7 @@
-
 import {Form, Button, DropdownButton, Dropdown, Container, Row, Col} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import DatePicker from 'react-datepicker';
-import {changeSearchValue, setDate, setDropDownValueForSearch} from "../../Redux/Action";
+import {changeSearchValue, setDate, setDropDownValueForSearch, searchFilterThunk} from "../../Redux/Action";
 
 const sortVariants = [
     {
@@ -50,19 +49,20 @@ const statusVariants = [
 ]
 const Search = (props) => {
     const {
-        //state
-        status,
+        setDropDownValueForSearch,
+        changeSearchValue,
+        setDate,
+        searchFilterThunk
+    } = props;
+    const {
         sort,
+        status,
         search,
         create_lte,
         create_gte,
         complete_lte,
-        complete_gte,
-        // functions
-        setDropDownValueForSearch,
-        changeSearchValue,
-        setDate
-    } = props;
+        complete_gte
+    } = props.state;
 
     const sortItems = sortVariants.map((variant, index) => {
         return (
@@ -77,10 +77,8 @@ const Search = (props) => {
     const statusItems = statusVariants.map((variant, index) => {
         return (
             <Dropdown.Item
-                name={"status"}
                 key={index}
                 onClick={() => setDropDownValueForSearch("status", variant.value)}
-
             >
                 {variant.label}
             </Dropdown.Item>
@@ -88,7 +86,7 @@ const Search = (props) => {
     })
     return (
         <div>
-            <Form className="mt-3">
+            <Form className="mt-3" onSubmit={(e) => e.preventDefault()}>
                 <Form.Group>
                     <Form.Control
                         type="search"
@@ -108,12 +106,10 @@ const Search = (props) => {
                         {sortItems}
                     </DropdownButton>
 
-
                     <DropdownButton
                         className="d-inline pl-3"
                         title={status ? statusVariants.find(i => i.value === status).label : "Status"}
                         variant="secondary"
-
                     >
                         {statusItems}
                     </DropdownButton>
@@ -124,10 +120,8 @@ const Search = (props) => {
                             <Form.Group>
                                 Created Late:
                                 <DatePicker
-                                    name={"create_lte"}
                                     selected={create_lte}
                                     onChange={date => setDate("create_lte", date)}
-                                    dateFormat={"yyyy-MM-dd"}
                                 />
                             </Form.Group>
                         </Col>
@@ -135,7 +129,6 @@ const Search = (props) => {
                             <Form.Group>
                                 Created Greater:
                                 <DatePicker
-                                    name={"create_gte"}
                                     selected={create_gte}
                                     onChange={date => setDate("create_gte", date)}
                                 />
@@ -148,7 +141,6 @@ const Search = (props) => {
                             <Form.Group>
                                 Completed Late:
                                 <DatePicker
-                                    name={"complete_lte"}
                                     selected={complete_lte}
                                     onChange={date => setDate("complete_lte", date)}
                                 />
@@ -159,23 +151,22 @@ const Search = (props) => {
                             <Form.Group>
                                 Completed Greater:
                                 <DatePicker
-                                    name={"complete_gte"}
+
                                     selected={complete_gte}
                                     onChange={date => setDate("complete_gte", date)}
                                 />
                             </Form.Group>
                         </Col>
-
                     </Row>
-
                 </Container>
 
-
                 <Form.Group className="mt-3">
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary"
+                            type="submit"
+                            onClick={() => searchFilterThunk(props.state)}
+                    >
                         Submit
                     </Button>
-
                 </Form.Group>
 
             </Form>
@@ -183,29 +174,15 @@ const Search = (props) => {
     )
 }
 const mapStateToProps = (state) => {
-    const {
-        sort,
-        status,
-        search,
-        create_lte,
-        create_gte,
-        complete_lte,
-        complete_gte,
-    } = state.SearchState
-    return {
-        sort,
-        status,
-        search,
-        create_lte,
-        create_gte,
-        complete_lte,
-        complete_gte,
 
+    return {
+        state: state.SearchState
     }
 }
 const mapDispatchToProps = {
     setDropDownValueForSearch,
     changeSearchValue,
-    setDate
+    setDate,
+    searchFilterThunk
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

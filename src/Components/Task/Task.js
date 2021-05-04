@@ -22,7 +22,6 @@ const Task = ({
     const cls = [s.tasksBackground]
 
     return (
-
         <Container className={cls.join(" ")}>
             <Row>
                 <input onChange={() => handleToggleCheckTasks(task._id)} type="checkbox" checked={isChecked}/>
@@ -61,12 +60,10 @@ const Task = ({
 
                     </Button>
 
-
                 </Col>
             </Row>
 
         </Container>
-
     )
 
 }
@@ -84,7 +81,6 @@ Task.propTypes = {
     toggleCheckAll: PropTypes.func,
     setEditableTask: PropTypes.func
 }
-
 
 export default withRouter(memo(Task));
 

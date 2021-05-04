@@ -2,9 +2,9 @@ import types from "./ActionTypes"
 
 const API_HOST = "http://localhost:3001";
 
-export function getTasksThunk(dispatch, search="") {
+export function getTasksThunk(dispatch) {
     dispatch({type: types.SET_OR_REMOVE_LOADING, isLoading: true});
-    fetch(`${API_HOST}/task/` + search, {
+    fetch(`${API_HOST}/task/`, {
         method: "GET"
     })
         .then(res => res.json())
@@ -261,6 +261,39 @@ export const changeSearchValue = (target) => (dispatch) => {
 
 export const setDate = (name, date) => (dispatch) => {
     dispatch({ type: types.SET_DATE, name, date });
+}
+
+
+export const searchFilterThunk = (formData) => (dispatch) => {
+    let formDataFilter = { ...formData };
+    window.formDataFilter = formDataFilter;
+    let query = "?";
+    for (let key in formDataFilter) {
+        if (!formDataFilter[key]) delete formDataFilter[key]
+        else {
+            query += key + "=" + formDataFilter[key] + "&";
+        }
+    }
+    if (Object.keys(formDataFilter).length) {
+        dispatch({ type: types.SET_OR_REMOVE_LOADING, isLoading: true });   //Loading Started
+        fetch(`${API_HOST}/task${query.slice(0, query.length - 1)}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.error)
+                    throw data.error;
+                dispatch({ type: types.GET_TASKS, data });
+                dispatch({ type: types.RESET_SEARCH_STATE });
+
+
+            })
+            .catch(error => {
+                dispatch({ type: types.SET_ERROR_MESSAGE, error: error.message });
+            })
+            .finally(() => {
+                dispatch({ type: types.SET_OR_REMOVE_LOADING, isLoading: false });   //Loading Ended
+            })
+    }
+
 }
 
 
